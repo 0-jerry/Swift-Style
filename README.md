@@ -31,7 +31,7 @@ We offer a Swift Package Manager command plugin that autocorrects or lints your 
 
 ```swift
 dependencies: [
-  .package(url: "https://github.com/airbnb/swift", from: "1.0.0"),
+    .package(url: "https://github.com/airbnb/swift", from: "1.0.0"),
 ]
 ```
 
@@ -113,7 +113,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   </details>
 
-- <a id='spaces-over-tabs'></a>(<a href='#spaces-over-tabs'>link</a>) **Use 2 spaces to indent lines.**
+- <a id='spaces-over-tabs'></a>(<a href='#spaces-over-tabs'>link</a>) **Use 4 spaces to indent lines.**
 
   <details>
 
@@ -139,25 +139,25 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   protocol SpaceThing {
-    ...
+      ...
   }
 
   class SpaceFleet: SpaceThing {
 
-    enum Formation {
-      ...
-    }
+      enum Formation {
+          ...
+      }
 
-    class Spaceship {
-      ...
-    }
+      class Spaceship {
+          ...
+      }
 
-    var ships: [Spaceship] = []
-    static let worldName: String = "Earth"
+      var ships: [Spaceship] = []
+      static let worldName: String = "Earth"
 
-    func addShip(_ ship: Spaceship) {
-      ...
-    }
+      func addShip(_ ship: Spaceship) {
+          ...
+      }
   }
 
   let myFleet = SpaceFleet()
@@ -173,24 +173,24 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   public final class AnyRequester<ModelType>: Requester {
 
-    public init<T: Requester>(_ requester: T) where T.ModelType == ModelType {
-      _executeRequest = requester.executeRequest
-    }
+      public init<T: Requester>(_ requester: T) where T.ModelType == ModelType {
+          _executeRequest = requester.executeRequest
+      }
 
-    @discardableResult
-    public func executeRequest(
-      _ request: URLRequest,
-      onSuccess: @escaping (ModelType, Bool) -> Void,
-      onFailure: @escaping (Error) -> Void
-    ) -> URLSessionCancellable {
-      return _executeRequest(request, onSuccess, onFailure)
-    }
+      @discardableResult
+      public func executeRequest(
+          _ request: URLRequest,
+          onSuccess: @escaping (ModelType, Bool) -> Void,
+          onFailure: @escaping (Error) -> Void
+      ) -> URLSessionCancellable {
+          return _executeRequest(request, onSuccess, onFailure)
+      }
 
-    private let _executeRequest: (
-      URLRequest,
-      @escaping (ModelType, Bool) -> Void,
-      @escaping (Error) -> Void
-    ) -> URLSessionCancellable
+      private let _executeRequest: (
+          URLRequest,
+          @escaping (ModelType, Bool) -> Void,
+          @escaping (Error) -> Void
+      ) -> URLSessionCancellable
   }
   ```
 
@@ -198,12 +198,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   final class ExperiencesViewController: UIViewController {
-    // We can't name this view since UIViewController has a view: UIView property.
-    private lazy var _view = CustomView()
+      // We can't name this view since UIViewController has a view: UIView property.
+      private lazy var _view = CustomView()
 
-    loadView() {
-      self.view = _view
-    }
+      loadView() {
+          self.view = _view
+      }
   }
   ```
 
@@ -219,13 +219,13 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   class UrlValidator {
 
-    func isValidUrl(_ URL: URL) -> Bool {
-      ...
-    }
+      func isValidUrl(_ URL: URL) -> Bool {
+          ...
+      }
 
-    func isProfileUrl(_ URL: URL, for userId: String) -> Bool {
-      ...
-    }
+      func isProfileUrl(_ URL: URL, for userId: String) -> Bool {
+          ...
+      }
   }
 
   let URLValidator = UrlValidator()
@@ -234,13 +234,13 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // RIGHT
   class URLValidator {
 
-    func isValidURL(_ url: URL) -> Bool {
-      ...
-    }
+      func isValidURL(_ url: URL) -> Bool {
+          ...
+      }
 
-    func isProfileURL(_ url: URL, for userID: String) -> Bool {
-      ...
-    }
+      func isProfileURL(_ url: URL, for userID: String) -> Bool {
+          ...
+      }
   }
 
   let urlValidator = URLValidator()
@@ -257,25 +257,25 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   class ExperiencesViewController {
 
-    private func handleBookButtonTap() {
-      ...
-    }
+      private func handleBookButtonTap() {
+          ...
+      }
 
-    private func modelChanged() {
-      ...
-    }
+      private func modelChanged() {
+          ...
+      }
   }
 
   // RIGHT
   class ExperiencesViewController {
 
-    private func didTapBookButton() {
-      ...
-    }
+      private func didTapBookButton() {
+          ...
+      }
 
-    private func modelDidChange() {
-      ...
-    }
+      private func modelDidChange() {
+          ...
+      }
   }
   ```
 
@@ -288,12 +288,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   class AIRAccount {
-    ...
+      ...
   }
 
   // RIGHT
   class Account {
-    ...
+      ...
   }
   ```
 
@@ -339,19 +339,19 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // WRONG: Types can be inferred from if/switch expressions as well if each branch has the same explicit type.
   let smallestPlanet: Planet =
-    if treatPlutoAsPlanet {
-      Planet.pluto
-    } else {
-      Planet.mercury
-    }
+      if treatPlutoAsPlanet {
+          Planet.pluto
+      } else {
+          Planet.mercury
+      }
 
   // RIGHT
   let smallestPlanet =
-    if treatPlutoAsPlanet {
-      Planet.pluto
-    } else {
-      Planet.mercury
-    }
+      if treatPlutoAsPlanet {
+          Planet.pluto
+      } else {
+          Planet.mercury
+      }
   ```
 
   </details>
@@ -369,26 +369,26 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   struct SolarSystemBuilder {
-    let sun: Star = .init(mass: 1.989e30)
-    let earth: Planet = .earth
+      let sun: Star = .init(mass: 1.989e30)
+      let earth: Planet = .earth
 
-    func setUp() {
-      let galaxy: Galaxy = .andromeda
-      let system: SolarSystem = .init(sun, earth)
-      galaxy.add(system)
-    }
+      func setUp() {
+          let galaxy: Galaxy = .andromeda
+          let system: SolarSystem = .init(sun, earth)
+          galaxy.add(system)
+      }
   }
 
   // RIGHT
   struct SolarSystemBuilder {
-    let sun = Star(mass: 1.989e30)
-    let earth = Planet.earth
+      let sun = Star(mass: 1.989e30)
+      let earth = Planet.earth
 
-    func setUp() {
-      let galaxy = Galaxy.andromeda
-      let system = SolarSystem(sun, earth)
-      galaxy.add(system)
-    }
+      func setUp() {
+          let galaxy = Galaxy.andromeda
+          let system = SolarSystem(sun, earth)
+          galaxy.add(system)
+      }
   }
   ```
 
@@ -409,7 +409,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   extension String {
-    static let earth = "Earth"
+      static let earth = "Earth"
   }
 
   // WRONG: fails with "error: type 'String?' has no member 'earth'"
@@ -423,9 +423,9 @@ _You can enable the following settings in Xcode by running [this script](https:/
   struct SaturnOutline: ShapeStyle { ... }
 
   extension ShapeStyle where Self == SaturnOutline {
-    static var saturnOutline: SaturnOutline {
-      SaturnOutline()
-    }
+      static var saturnOutline: SaturnOutline {
+          SaturnOutline()
+      }
   }
 
   // WRONG: fails with "error: static member 'saturnOutline' cannot be used on protocol metatype '(any ShapeStyle).Type'"
@@ -451,32 +451,32 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   final class Listing {
 
-    init(capacity: Int, allowsPets: Bool) {
-      // WRONG
-      self.capacity = capacity
-      self.isFamilyFriendly = !allowsPets // `self.` not required here
+      init(capacity: Int, allowsPets: Bool) {
+          // WRONG
+          self.capacity = capacity
+          self.isFamilyFriendly = !allowsPets // `self.` not required here
 
-      // RIGHT
-      self.capacity = capacity
-      isFamilyFriendly = !allowsPets
-    }
+          // RIGHT
+          self.capacity = capacity
+          isFamilyFriendly = !allowsPets
+      }
 
-    private let isFamilyFriendly: Bool
-    private var capacity: Int
+      private let isFamilyFriendly: Bool
+      private var capacity: Int
 
-    private func increaseCapacity(by amount: Int) {
-      // WRONG
-      self.capacity += amount
+      private func increaseCapacity(by amount: Int) {
+          // WRONG
+          self.capacity += amount
 
-      // RIGHT
-      capacity += amount
+          // RIGHT
+          capacity += amount
 
-      // WRONG
-      self.save()
+          // WRONG
+          self.save()
 
-      // RIGHT
-      save()
-    }
+          // RIGHT
+          save()
+      }
   }
   ```
 
@@ -492,25 +492,25 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   class MyClass {
 
-    func request(completion: () -> Void) {
-      API.request() { [weak self] response in
-        guard let strongSelf = self else { return }
-        // Do work
-        completion()
+      func request(completion: () -> Void) {
+          API.request() { [weak self] response in
+              guard let strongSelf = self else { return }
+              // Do work
+              completion()
+          }
       }
-    }
   }
 
   // RIGHT
   class MyClass {
 
-    func request(completion: () -> Void) {
-      API.request() { [weak self] response in
-        guard let self else { return }
-        // Do work
-        completion()
+      func request(completion: () -> Void) {
+          API.request() { [weak self] response in
+              guard let self else { return }
+              // Do work
+              completion()
+          }
       }
-    }
   }
   ```
 
@@ -525,66 +525,66 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   let terrestrialPlanets = [
-    mercury,
-    venus,
-    earth,
-    mars
+      mercury,
+      venus,
+      earth,
+      mars
   ]
 
   func buildSolarSystem(
-    innerPlanets: [Planet],
-    outerPlanets: [Planet]
+      innerPlanets: [Planet],
+      outerPlanets: [Planet]
   ) { ... }
 
   buildSolarSystem(
-    innerPlanets: terrestrialPlanets,
-    outerPlanets: gasGiants
+      innerPlanets: terrestrialPlanets,
+      outerPlanets: gasGiants
   )
 
   // RIGHT
   let terrestrialPlanets = [
-    mercury,
-    venus,
-    earth,
-    mars,
+      mercury,
+      venus,
+      earth,
+      mars,
   ]
 
   func buildSolarSystem(
-    innerPlanets: [Planet],
-    outerPlanets: [Planet],
+      innerPlanets: [Planet],
+      outerPlanets: [Planet],
   ) { ... }
 
   buildSolarSystem(
-    innerPlanets: terrestrialPlanets,
-    outerPlanets: gasGiants,
+      innerPlanets: terrestrialPlanets,
+      outerPlanets: gasGiants,
   )
   ```
 
   ```swift
   // WRONG: Omit the trailing comma in single-element lists.
   let planetsWithLife = [
-    earth,
+      earth,
   ]
 
   func buildSolarSystem(
-    _ planets: [Planet],
+      _ planets: [Planet],
   )
 
   buildSolarSystem(
-    terrestrialPlanets + gasGiants,
+      terrestrialPlanets + gasGiants,
   )
 
   // RIGHT
   let planetsWithLife = [
-    earth
+      earth
   ]
 
   func buildSolarSystem(
-    _ planets: [Planet]
+      _ planets: [Planet]
   ) { ... }
 
   buildSolarSystem(
-    terrestrialPlanets + gasGiants
+      terrestrialPlanets + gasGiants
   )
   ```
 
@@ -615,21 +615,21 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   func whatever() -> (Int, Int) {
-    return (4, 4)
+      return (4, 4)
   }
   let thing = whatever()
   print(thing.0)
 
   // RIGHT
   func whatever() -> (x: Int, y: Int) {
-    return (x: 4, y: 4)
+      return (x: 4, y: 4)
   }
 
   // THIS IS ALSO OKAY
   func whatever2() -> (x: Int, y: Int) {
-    let x = 4
-    let y = 4
-    return (x, y)
+      let x = 4
+      let y = 4
+      return (x, y)
   }
 
   let coord = whatever()
@@ -657,30 +657,30 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   class Planet : CelestialObject {
-    ...
+      ...
   }
 
   // RIGHT
   class Planet: CelestialObject {
-    ...
+      ...
   }
   ```
 
   ```swift
   // WRONG
   let moons: [Planet : Moon] = [
-    mercury : [],
-    venus : [],
-    earth : [theMoon],
-    mars : [phobos,deimos],
+      mercury : [],
+      venus : [],
+      earth : [theMoon],
+      mars : [phobos,deimos],
   ]
 
   // RIGHT
   let moons: [Planet: Moon] = [
-    mercury: [],
-    venus: [],
-    earth: [theMoon],
-    mars: [phobos,deimos],
+      mercury: [],
+      venus: [],
+      earth: [theMoon],
+      mars: [phobos,deimos],
   ]
   ```
 
@@ -695,24 +695,24 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   func doSomething()->String {
-    ...
+      ...
   }
 
   // RIGHT
   func doSomething() -> String {
-    ...
+      ...
   }
   ```
 
   ```swift
   // WRONG
   func doSomething(completion: ()->Void) {
-    ...
+      ...
   }
 
   // RIGHT
   func doSomething(completion: () -> Void) {
-    ...
+      ...
   }
   ```
 
@@ -752,7 +752,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   switch animal {
   case .dog(_, _, _):
-    ...
+      ...
   }
 
   // RIGHT
@@ -760,7 +760,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   switch animal {
   case .dog:
-    ...
+      ...
   }
   ```
 
@@ -776,27 +776,27 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   switch result {
   case let .success(value):
-    ...
+      ...
   case let .error(errorCode, errorReason):
-    ...
+      ...
   }
 
   // WRONG
   guard let case .success(value) else {
-    return
+      return
   }
 
   // RIGHT
   switch result {
   case .success(let value):
-    ...
+      ...
   case .error(let errorCode, let errorReason):
-    ...
+      ...
   }
 
   // RIGHT
   guard case .success(let value) else {
-    return
+      return
   }
   ```
 
@@ -830,13 +830,13 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   @objc class Spaceship {
 
-    @ViewBuilder var controlPanel: some View {
-      ...
-    }
+      @ViewBuilder var controlPanel: some View {
+          ...
+      }
 
-    @discardableResult func fly() -> Bool {
-      ...
-    }
+      @discardableResult func fly() -> Bool {
+          ...
+      }
 
   }
 
@@ -844,15 +844,15 @@ _You can enable the following settings in Xcode by running [this script](https:/
   @objc
   class Spaceship {
 
-    @ViewBuilder
-    var controlPanel: some View {
-      ...
-    }
+      @ViewBuilder
+      var controlPanel: some View {
+          ...
+      }
 
-    @discardableResult
-    func fly() -> Bool {
-      ...
-    }
+      @discardableResult
+      func fly() -> Bool {
+          ...
+      }
 
   }
   ```
@@ -869,25 +869,25 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG. These simple property wrappers should be written on the same line as the declaration.
   struct SpaceshipDashboardView {
 
-    @State
-    private var warpDriveEnabled: Bool
+      @State
+      private var warpDriveEnabled: Bool
 
-    @ObservedObject
-    private var lifeSupportService: LifeSupportService
+      @ObservedObject
+      private var lifeSupportService: LifeSupportService
 
-    @Environment(\.controlPanelStyle)
-    private var controlPanelStyle
+      @Environment(\.controlPanelStyle)
+      private var controlPanelStyle
 
   }
 
   // RIGHT
   struct SpaceshipDashboardView {
 
-    @State private var warpDriveEnabled: Bool
+      @State private var warpDriveEnabled: Bool
 
-    @ObservedObject private var lifeSupportService: LifeSupportService
+      @ObservedObject private var lifeSupportService: LifeSupportService
 
-    @Environment(\.controlPanelStyle) private var controlPanelStyle
+      @Environment(\.controlPanelStyle) private var controlPanelStyle
 
   }
   ```
@@ -896,20 +896,20 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG. These complex attached macros should be written on the previous line.
   struct SolarSystemView {
 
-    @Query(sort: \.distance) var allPlanets: [Planet]
+      @Query(sort: \.distance) var allPlanets: [Planet]
 
-    @Query(sort: \.age, order: .reverse) var moonsByAge: [Moon]
+      @Query(sort: \.age, order: .reverse) var moonsByAge: [Moon]
 
   }
 
   // RIGHT
   struct SolarSystemView {
 
-    @Query(sort: \.distance)
-    var allPlanets: [Planet]
+      @Query(sort: \.distance)
+      var allPlanets: [Planet]
 
-    @Query(sort: \.age, order: .reverse)
-    var oldestMoons: [Moon]
+      @Query(sort: \.age, order: .reverse)
+      var oldestMoons: [Moon]
 
   }
   ```
@@ -918,25 +918,25 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG. These long, complex attributes should be written on the previous line.
   struct RocketFactory {
 
-    @available(*, unavailable, message: "No longer in production") var saturn5Builder: Saturn5Builder
+      @available(*, unavailable, message: "No longer in production") var saturn5Builder: Saturn5Builder
 
-    @available(*, deprecated, message: "To be retired by 2030") var atlas5Builder: Atlas5Builder
+      @available(*, deprecated, message: "To be retired by 2030") var atlas5Builder: Atlas5Builder
 
-    @available(*, iOS 18.0, tvOS 18.0, macOS 15.0, watchOS 11.0) var newGlennBuilder: NewGlennBuilder
+      @available(*, iOS 18.0, tvOS 18.0, macOS 15.0, watchOS 11.0) var newGlennBuilder: NewGlennBuilder
 
   }
 
   // RIGHT
   struct RocketFactory {
 
-    @available(*, unavailable, message: "No longer in production")
-    var saturn5Builder: Saturn5Builder
+      @available(*, unavailable, message: "No longer in production")
+      var saturn5Builder: Saturn5Builder
 
-    @available(*, deprecated, message: "To be retired by 2030")
-    var atlas5Builder: Atlas5Builder
+      @available(*, deprecated, message: "To be retired by 2030")
+      var atlas5Builder: Atlas5Builder
 
-    @available(*, iOS 18.0, tvOS 18.0, macOS 15.0, watchOS 11.0)
-    var newGlennBuilder: NewGlennBuilder
+      @available(*, iOS 18.0, tvOS 18.0, macOS 15.0, watchOS 11.0)
+      var newGlennBuilder: NewGlennBuilder
 
   }
   ```
@@ -947,13 +947,13 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   struct SpaceshipDashboardView {
-    @State private var warpDriveEnabled: Bool
-    @State private var lifeSupportEnabled: Bool
-    @State private var artificialGravityEnabled: Bool
-    @State private var tractorBeamEnabled: Bool
+      @State private var warpDriveEnabled: Bool
+      @State private var lifeSupportEnabled: Bool
+      @State private var artificialGravityEnabled: Bool
+      @State private var tractorBeamEnabled: Bool
 
-    @Environment(\.controlPanelStyle) private var controlPanelStyle
-    @Environment(\.toggleButtonStyle) private var toggleButtonStyle
+      @Environment(\.controlPanelStyle) private var controlPanelStyle
+      @Environment(\.toggleButtonStyle) private var toggleButtonStyle
   }
   ```
 
@@ -961,19 +961,19 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   struct SpaceshipDashboardView {
-    @State
-    private var warpDriveEnabled: Bool
-    @State
-    private var lifeSupportEnabled: Bool
-    @State
-    private var artificialGravityEnabled: Bool
-    @State
-    private var tractorBeamEnabled: Bool
+      @State
+      private var warpDriveEnabled: Bool
+      @State
+      private var lifeSupportEnabled: Bool
+      @State
+      private var artificialGravityEnabled: Bool
+      @State
+      private var tractorBeamEnabled: Bool
 
-    @Environment(\.controlPanelStyle)
-    private var controlPanelStyle
-    @Environment(\.toggleButtonStyle)
-    private var toggleButtonStyle
+      @Environment(\.controlPanelStyle)
+      private var controlPanelStyle
+      @Environment(\.toggleButtonStyle)
+      private var toggleButtonStyle
   }
   ```
 
@@ -981,23 +981,23 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   struct SpaceshipDashboardView {
-    @State
-    private var warpDriveEnabled: Bool
+      @State
+      private var warpDriveEnabled: Bool
 
-    @State
-    private var lifeSupportEnabled: Bool
+      @State
+      private var lifeSupportEnabled: Bool
 
-    @State
-    private var artificialGravityEnabled: Bool
+      @State
+      private var artificialGravityEnabled: Bool
 
-    @State
-    private var tractorBeamEnabled: Bool
+      @State
+      private var tractorBeamEnabled: Bool
 
-    @Environment(\.controlPanelStyle)
-    private var controlPanelStyle
+      @Environment(\.controlPanelStyle)
+      private var controlPanelStyle
 
-    @Environment(\.toggleButtonStyle)
-    private var toggleButtonStyle
+      @Environment(\.toggleButtonStyle)
+      private var toggleButtonStyle
   }
   ```
 
@@ -1021,20 +1021,20 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   public struct Spaceship {
-    nonisolated
-    public func fly() { ... }
+      nonisolated
+      public func fly() { ... }
 
-    @MainActor
-    public
-    func fly() { ... }
+      @MainActor
+      public
+      func fly() { ... }
   }
 
   // RIGHT
   public struct Spaceship {
-    nonisolated public func fly() { ... }
+      nonisolated public func fly() { ... }
 
-    @MainActor
-    public func fly() { ... }
+      @MainActor
+      public func fly() { ... }
   }
   ```
 
@@ -1054,16 +1054,16 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // WRONG
   let rowContent = [
-    listingUrgencyDatesRowContent(),
-    listingUrgencyBookedRowContent(),
-    listingUrgencyBookedShortRowContent()
+      listingUrgencyDatesRowContent(),
+      listingUrgencyBookedRowContent(),
+      listingUrgencyBookedShortRowContent()
   ]
 
   // RIGHT
   let rowContent = [
-    listingUrgencyDatesRowContent(),
-    listingUrgencyBookedRowContent(),
-    listingUrgencyBookedShortRowContent(),
+      listingUrgencyDatesRowContent(),
+      listingUrgencyBookedRowContent(),
+      listingUrgencyBookedShortRowContent(),
   ]
   ```
 
@@ -1081,22 +1081,22 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // WRONG (naive wrapping)
   public typealias Dependencies = CivilizationServiceProviding & LawsOfPhysicsProviding & PlanetBuilderProviding &
-    UniverseBuilderProviding & UniverseSimulatorServiceProviding
+      UniverseBuilderProviding & UniverseSimulatorServiceProviding
 
   // WRONG (unbalanced)
   public typealias Dependencies = CivilizationServiceProviding
-    & LawsOfPhysicsProviding
-    & PlanetBuilderProviding
-    & UniverseBuilderProviding
-    & UniverseSimulatorServiceProviding
+      & LawsOfPhysicsProviding
+      & PlanetBuilderProviding
+      & UniverseBuilderProviding
+      & UniverseSimulatorServiceProviding
 
   // RIGHT
   public typealias Dependencies
-    = CivilizationServiceProviding
-    & LawsOfPhysicsProviding
-    & PlanetBuilderProviding
-    & UniverseBuilderProviding
-    & UniverseSimulatorServiceProviding
+      = CivilizationServiceProviding
+      & LawsOfPhysicsProviding
+      & PlanetBuilderProviding
+      & UniverseBuilderProviding
+      & UniverseSimulatorServiceProviding
   ```
 
   </details>
@@ -1114,19 +1114,19 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG (not sorted)
   public typealias Dependencies
-    = UniverseBuilderProviding
-    & LawsOfPhysicsProviding
-    & UniverseSimulatorServiceProviding
-    & PlanetBuilderProviding
-    & CivilizationServiceProviding
+      = UniverseBuilderProviding
+      & LawsOfPhysicsProviding
+      & UniverseSimulatorServiceProviding
+      & PlanetBuilderProviding
+      & CivilizationServiceProviding
 
   // RIGHT
   public typealias Dependencies
-    = CivilizationServiceProviding
-    & LawsOfPhysicsProviding
-    & PlanetBuilderProviding
-    & UniverseBuilderProviding
-    & UniverseSimulatorServiceProviding
+      = CivilizationServiceProviding
+      & LawsOfPhysicsProviding
+      & PlanetBuilderProviding
+      & UniverseBuilderProviding
+      & UniverseSimulatorServiceProviding
   ```
 
   </details>
@@ -1148,16 +1148,16 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   if
-    let galaxy = galaxy,
-    galaxy.name == "Milky Way"
+      let galaxy = galaxy,
+      galaxy.name == "Milky Way"
   { ... }
 
   guard let self = self else { ... }
 
   // RIGHT
   if
-    let galaxy,
-    galaxy.name == "Milky Way"
+      let galaxy,
+      galaxy.name == "Milky Way"
   { ... }
 
   guard let self else { ... }
@@ -1166,12 +1166,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // PREFERRED
   if let spaceship {
-    launch(spaceship)
+      launch(spaceship)
   }
 
   // LESS PREFERRED
   if let ship = spaceship {
-    launch(ship)
+      launch(ship)
   }
   ```
 
@@ -1180,7 +1180,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // ALSO RIGHT
   if let destination = pendingDestination {
-    spaceship.travel(to: destination)
+      spaceship.travel(to: destination)
   }
   ```
 
@@ -1195,56 +1195,56 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   if let galaxy {
-    ...
+      ...
   }
   else if let bigBangService {
-    ...
+      ...
   }
   else {
-    ...
+      ...
   }
 
   // RIGHT
   if let galaxy {
-    ...
+      ...
   } else if let bigBangService {
-    ...
+      ...
   } else {
-    ...
+      ...
   }
 
   // RIGHT, because there are comments between the conditions
   if let galaxy {
-    ...
+      ...
   }
   // If the galaxy hasn't been created yet, create it using the big bang service
   else if let bigBangService {
-    ...
+      ...
   }
   // If the big bang service doesn't exist, fail gracefully
   else {
-    ...
+      ...
   }
 
   // RIGHT, because there are blank lines between the conditions
   if let galaxy {
-    ...
+      ...
   }
 
   else if let bigBangService {
-    // If the galaxy hasn't been created yet, create it using the big bang service
-    ...
+      // If the galaxy hasn't been created yet, create it using the big bang service
+      ...
   }
 
   else {
-    // If the big bang service doesn't exist, fail gracefully
-    ...
+      // If the big bang service doesn't exist, fail gracefully
+      ...
   }
   ```
 
   </details>
 
-- <a id='multi-line-conditions'></a>(<a href='#multi-line-conditions'>link</a>) **Multi-line conditional statements should break after the leading keyword.** Indent each individual statement by [2 spaces](#spaces-over-tabs).
+- <a id='multi-line-conditions'></a>(<a href='#multi-line-conditions'>link</a>) **Multi-line conditional statements should break after the leading keyword.** Indent each individual statement by [4 spaces](#spaces-over-tabs).
 
   <details>
 
@@ -1252,55 +1252,55 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   #### Why?
 
-  Breaking after the leading keyword resets indentation to the standard [2-space grid](#spaces-over-tabs),
+  Breaking after the leading keyword resets indentation to the standard [4-space grid](#spaces-over-tabs),
   which helps avoid fighting Xcode's <kbd>^</kbd> + <kbd>I</kbd> indentation behavior.
 
   ```swift
   // WRONG
   if let galaxy,
-    galaxy.name == "Milky Way" // Indenting by two spaces fights Xcode's ^+I indentation behavior
+          galaxy.name == "Milky Way" // Indenting by four spaces fights Xcode's ^+I indentation behavior
   { ... }
 
   // WRONG
   guard let galaxy,
-        galaxy.name == "Milky Way" // Variable width indentation (6 spaces)
+                  galaxy.name == "Milky Way" // Variable width indentation (8 spaces)
   else { ... }
 
   // WRONG
   guard let earth = universe.find(
-    .planet,
-    named: "Earth"),
-    earth.isHabitable // Blends in with previous condition's method arguments
+      .planet,
+      named: "Earth"),
+      earth.isHabitable // Blends in with previous condition's method arguments
   else { ... }
 
   // RIGHT
   if
-    let galaxy,
-    galaxy.name == "Milky Way"
+      let galaxy,
+      galaxy.name == "Milky Way"
   { ... }
 
   // RIGHT
   guard
-    let galaxy,
-    galaxy.name == "Milky Way"
+      let galaxy,
+      galaxy.name == "Milky Way"
   else { ... }
 
   // RIGHT
   guard
-    let earth = universe.find(
-      .planet,
-      named: "Earth"),
-    earth.isHabitable
+      let earth = universe.find(
+          .planet,
+          named: "Earth"),
+      earth.isHabitable
   else { ... }
 
   // RIGHT
   if let galaxy {
-    ...
+      ...
   }
 
   // RIGHT
   guard let galaxy else {
-    ...
+      ...
   }
   ```
 
@@ -1323,44 +1323,44 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG. Should have a line break after the first `=`.
   let planetLocation = if let star = planet.star {
-    "The \(star.name) system"
-   } else {
-    "Rogue planet"
+      "The \(star.name) system"
+    } else {
+      "Rogue planet"
   }
 
   // WRONG. The first `=` should be on the line of the variable being assigned.
   let planetLocation
-    = if let star = planet.star {
-      "The \(star.name) system"
-    } else {
-      "Rogue planet"
-    }
+      = if let star = planet.star {
+          "The \(star.name) system"
+      } else {
+          "Rogue planet"
+      }
 
   // WRONG. `switch` expression should be indented.
   let planetLocation =
   switch planet {
   case .mercury, .venus, .earth, .mars:
-    .terrestrial
+      .terrestrial
   case .jupiter, .saturn, .uranus, .neptune:
-    .gasGiant
+      .gasGiant
   }
 
   // RIGHT
   let planetLocation =
-    if let star = planet.star {
-      "The \(star.name) system"
-    } else {
-      "Rogue planet"
-    }
+      if let star = planet.star {
+          "The \(star.name) system"
+      } else {
+          "Rogue planet"
+      }
 
   // RIGHT
   let planetType: PlanetType =
-    switch planet {
-    case .mercury, .venus, .earth, .mars:
-      .terrestrial
-    case .jupiter, .saturn, .uranus, .neptune:
-      .gasGiant
-    }
+      switch planet {
+      case .mercury, .venus, .earth, .mars:
+          .terrestrial
+      case .jupiter, .saturn, .uranus, .neptune:
+          .gasGiant
+      }
   ```
 
   </details>
@@ -1385,9 +1385,9 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // 3. The `planetLocation` property name is written on each branch so is redundant and visually noisy.
   var planetLocation: String
   if let star = planet.star {
-    planetLocation = "The \(star.name) system"
+      planetLocation = "The \(star.name) system"
   } else {
-    planetLocation = "Rogue planet"
+      planetLocation = "Rogue planet"
   }
 
   print(planetLocation)
@@ -1397,11 +1397,11 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // 2. The compiler correctly diagnoses that the `var` is unnecessary and emits a warning suggesting to use `let` instead.
   // 3. Each conditional branch is simply the value being assigned.
   var planetLocation =
-    if let star = planet.star {
-      "The \(star.name) system"
-    } else {
-      "Rogue planet"
-    }
+      if let star = planet.star {
+          "The \(star.name) system"
+      } else {
+          "Rogue planet"
+      }
 
   print(planetLocation)
   ```
@@ -1412,65 +1412,65 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   let planetLocation: String
   if let star = planet.star {
-    planetLocation = "The \(star.name) system"
+      planetLocation = "The \(star.name) system"
   } else {
-    planetLocation = "Rogue planet"
+      planetLocation = "Rogue planet"
   }
 
   let planetType: PlanetType
   switch planet {
   case .mercury, .venus, .earth, .mars:
-    planetType = .terrestrial
+      planetType = .terrestrial
   case .jupiter, .saturn, .uranus, .neptune:
-    planetType = .gasGiant
+      planetType = .gasGiant
   }
 
   let canBeTerraformed: Bool
   if
-    let star = planet.star,
-    !planet.isHabitable,
-    planet.isInHabitableZone(of: star)
+      let star = planet.star,
+      !planet.isHabitable,
+      planet.isInHabitableZone(of: star)
   {
-    canBeTerraformed = true
+      canBeTerraformed = true
   } else {
-    canBeTerraformed = false
+      canBeTerraformed = false
   }
 
   // RIGHT
   let planetLocation =
-    if let star = planet.star {
-      "The \(star.name) system"
-    } else {
-      "Rogue planet"
-    }
+      if let star = planet.star {
+          "The \(star.name) system"
+      } else {
+          "Rogue planet"
+      }
 
   let planetType: PlanetType =
-    switch planet {
-    case .mercury, .venus, .earth, .mars:
-      .terrestrial
-    case .jupiter, .saturn, .uranus, .neptune:
-      .gasGiant
-    }
+      switch planet {
+      case .mercury, .venus, .earth, .mars:
+          .terrestrial
+      case .jupiter, .saturn, .uranus, .neptune:
+          .gasGiant
+      }
 
   let canBeTerraformed =
-    if
-      let star = planet.star,
-      !planet.isHabitable,
-      planet.isInHabitableZone(of: star)
-    {
-      true
-    } else {
-      false
-    }
+      if
+          let star = planet.star,
+          !planet.isHabitable,
+          planet.isInHabitableZone(of: star)
+      {
+          true
+      } else {
+          false
+      }
 
   // ALSO RIGHT. This example cannot be converted to an if/switch expression
   // because one of the branches is more than just a single expression.
   let planetLocation: String
   if let star = planet.star {
-    planetLocation = "The \(star.name) system"
+      planetLocation = "The \(star.name) system"
   } else {
-    let actualLocaton = galaxy.name ?? "the universe"
-    planetLocation = "Rogue planet somewhere in \(actualLocation)"
+      let actualLocaton = galaxy.name ?? "the universe"
+      planetLocation = "Rogue planet somewhere in \(actualLocation)"
   }
   ```
 
@@ -1490,15 +1490,15 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // RIGHT
   if treatPlutoAsPlanet {
-    planets.append(.pluto)
+      planets.append(.pluto)
   }
 
   let moonName =
-    if let moon = planet.moon {
-      moon.name
-    } else {
-      "none"
-    }
+      if let moon = planet.moon {
+          moon.name
+      } else {
+          "none"
+      }
   ```
 
   </details>
@@ -1514,20 +1514,20 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   func planets(of type: PlanetType) -> [Planet] {
-    switch type {
-    case .terrestrial: [.mercury, .venus, .earth, .mars]
-    case .gasGiant: [.jupiter, .saturn, .uranus, .neptune]
-    }
+      switch type {
+      case .terrestrial: [.mercury, .venus, .earth, .mars]
+      case .gasGiant: [.jupiter, .saturn, .uranus, .neptune]
+      }
   }
 
   // RIGHT
   func planets(of type: PlanetType) -> [Planet] {
-    switch type {
-    case .terrestrial:
-      [.mercury, .venus, .earth, .mars]
-    case .gasGiant:
-      [.jupiter, .saturn, .uranus, .neptune]
-    }
+      switch type {
+      case .terrestrial:
+          [.mercury, .venus, .earth, .mars]
+      case .gasGiant:
+          [.jupiter, .saturn, .uranus, .neptune]
+      }
   }
   ```
 
@@ -1550,111 +1550,111 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG. These switch cases should be followed by a blank line.
   func handle(_ action: SpaceshipAction) {
-    switch action {
-    case .engageWarpDrive:
-      navigationComputer.destination = targetedDestination
-      warpDrive.spinUp()
-      warpDrive.activate()
-    case .enableArtificialGravity:
-      artificialGravityEngine.enable(strength: .oneG)
-    case .scanPlanet(let planet):
-      scanner.target = planet
-      scanner.scanAtmosphere()
-      scanner.scanBiosphere()
-      scanner.scanForArtificialLife()
-    case .handleIncomingEnergyBlast:
-      energyShields.engage()
-    }
+      switch action {
+      case .engageWarpDrive:
+          navigationComputer.destination = targetedDestination
+          warpDrive.spinUp()
+          warpDrive.activate()
+      case .enableArtificialGravity:
+          artificialGravityEngine.enable(strength: .oneG)
+      case .scanPlanet(let planet):
+          scanner.target = planet
+          scanner.scanAtmosphere()
+          scanner.scanBiosphere()
+          scanner.scanForArtificialLife()
+      case .handleIncomingEnergyBlast:
+          energyShields.engage()
+      }
   }
 
   // WRONG. While the `.enableArtificialGravity` case isn't multi-line, the other cases are.
   // For consistency, it should also include a trailing blank line.
   func handle(_ action: SpaceshipAction) {
-    switch action {
-    case .engageWarpDrive:
-      navigationComputer.destination = targetedDestination
-      warpDrive.spinUp()
-      warpDrive.activate()
+      switch action {
+      case .engageWarpDrive:
+          navigationComputer.destination = targetedDestination
+          warpDrive.spinUp()
+          warpDrive.activate()
 
-    case .enableArtificialGravity:
-      artificialGravityEngine.enable(strength: .oneG)
-    case .scanPlanet(let planet):
-      scanner.target = planet
-      scanner.scanAtmosphere()
-      scanner.scanBiosphere()
-      scanner.scanForArtificialLife()
+      case .enableArtificialGravity:
+          artificialGravityEngine.enable(strength: .oneG)
+      case .scanPlanet(let planet):
+          scanner.target = planet
+          scanner.scanAtmosphere()
+          scanner.scanBiosphere()
+          scanner.scanForArtificialLife()
 
-    case .handleIncomingEnergyBlast:
-      energyShields.engage()
-    }
+      case .handleIncomingEnergyBlast:
+          energyShields.engage()
+      }
   }
 
   // RIGHT. All of the cases have a trailing blank line.
   func handle(_ action: SpaceshipAction) {
-    switch action {
-    case .engageWarpDrive:
-      navigationComputer.destination = targetedDestination
-      warpDrive.spinUp()
-      warpDrive.activate()
+      switch action {
+      case .engageWarpDrive:
+          navigationComputer.destination = targetedDestination
+          warpDrive.spinUp()
+          warpDrive.activate()
 
-    case .enableArtificialGravity:
-      artificialGravityEngine.enable(strength: .oneG)
+      case .enableArtificialGravity:
+          artificialGravityEngine.enable(strength: .oneG)
 
-    case .scanPlanet(let planet):
-      scanner.target = planet
-      scanner.scanAtmosphere()
-      scanner.scanBiosphere()
-      scanner.scanForArtificialLife()
+      case .scanPlanet(let planet):
+          scanner.target = planet
+          scanner.scanAtmosphere()
+          scanner.scanBiosphere()
+          scanner.scanForArtificialLife()
 
-    case .handleIncomingEnergyBlast:
-      energyShields.engage()
-    }
+      case .handleIncomingEnergyBlast:
+          energyShields.engage()
+      }
   }
 
   // RIGHT. Since none of the cases are multi-line, blank lines are not required.
   func handle(_ action: SpaceshipAction) {
-    switch action {
-    case .engageWarpDrive:
-      warpDrive.engage()
-    case .enableArtificialGravity:
-      artificialGravityEngine.enable(strength: .oneG)
-    case .scanPlanet(let planet):
-      scanner.scan(planet)
-    case .handleIncomingEnergyBlast:
-      energyShields.engage()
-    }
+      switch action {
+      case .engageWarpDrive:
+          warpDrive.engage()
+      case .enableArtificialGravity:
+          artificialGravityEngine.enable(strength: .oneG)
+      case .scanPlanet(let planet):
+          scanner.scan(planet)
+      case .handleIncomingEnergyBlast:
+          energyShields.engage()
+      }
   }
 
   // ALSO RIGHT. Blank lines are still permitted after single-line switch cases if it helps with readability.
   func handle(_ action: SpaceshipAction) {
-    switch action {
-    case .engageWarpDrive:
-      warpDrive.engage()
+      switch action {
+      case .engageWarpDrive:
+          warpDrive.engage()
 
-    case .enableArtificialGravity:
-      artificialGravityEngine.enable(strength: .oneG)
+      case .enableArtificialGravity:
+          artificialGravityEngine.enable(strength: .oneG)
 
-    case .scanPlanet(let planet):
-      scanner.scan(planet)
+      case .scanPlanet(let planet):
+          scanner.scan(planet)
 
-    case .handleIncomingEnergyBlast:
-      energyShields.engage()
-    }
+      case .handleIncomingEnergyBlast:
+          energyShields.engage()
+      }
   }
 
   // WRONG. While it's fine to use blank lines to separate cases, spacing within a single switch statement should be consistent.
   func handle(_ action: SpaceshipAction) {
-    switch action {
-    case .engageWarpDrive:
-      warpDrive.engage()
-    case .enableArtificialGravity:
-      artificialGravityEngine.enable(strength: .oneG)
-    case .scanPlanet(let planet):
-      scanner.scan(planet)
+      switch action {
+      case .engageWarpDrive:
+          warpDrive.engage()
+      case .enableArtificialGravity:
+          artificialGravityEngine.enable(strength: .oneG)
+      case .scanPlanet(let planet):
+          scanner.scan(planet)
 
-    case .handleIncomingEnergyBlast:
-      energyShields.engage()
-    }
+      case .handleIncomingEnergyBlast:
+          energyShields.engage()
+      }
   }
   ```
 
@@ -1674,19 +1674,19 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   switch spaceship.warpDriveState {
   case .engaged:
-    navigator.engageWarpDrive()
-    break
+      navigator.engageWarpDrive()
+      break
   case .disengaged:
-    navigator.disengageWarpDrive()
-    break
+      navigator.disengageWarpDrive()
+      break
   }
 
   // RIGHT
   switch spaceship.warpDriveState {
   case .engaged:
-    navigator.engageWarpDrive()
+      navigator.engageWarpDrive()
   case .disengaged:
-    navigator.disengageWarpDrive()
+      navigator.disengageWarpDrive()
   }
   ```
 
@@ -1701,8 +1701,8 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG (else should be on its own line for multi-line guard statements)
   guard
-    let galaxy,
-    galaxy.name == "Milky Way" else
+      let galaxy,
+      galaxy.name == "Milky Way" else
   { ... }
 
   // WRONG (else should be on the same line for single-line guard statements)
@@ -1711,13 +1711,13 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // RIGHT
   guard
-    let galaxy,
-    galaxy.name == "Milky Way"
+      let galaxy,
+      galaxy.name == "Milky Way"
   else { ... }
 
   // RIGHT
   guard let galaxy else {
-    ...
+      ...
   }
   ```
 
@@ -1738,24 +1738,24 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // RIGHT
   var spaceQuote = """
-    “Space,” it says, “is big. Really big. You just won’t believe how vastly, hugely, mindbogglingly big it is.
-    I mean, you may think it’s a long way down the road to the chemist’s, but that’s just peanuts to space.”
-    """
+      “Space,” it says, “is big. Really big. You just won’t believe how vastly, hugely, mindbogglingly big it is.
+      I mean, you may think it’s a long way down the road to the chemist’s, but that’s just peanuts to space.”
+      """
 
   // WRONG
   var universeQuote: String {
-    """
-      In the beginning the Universe was created.
-      This has made a lot of people very angry and been widely regarded as a bad move.
       """
+          In the beginning the Universe was created.
+          This has made a lot of people very angry and been widely regarded as a bad move.
+          """
   }
 
   // RIGHT
   var universeQuote: String {
-    """
-    In the beginning the Universe was created.
-    This has made a lot of people very angry and been widely regarded as a bad move.
-    """
+      """
+      In the beginning the Universe was created.
+      This has made a lot of people very angry and been widely regarded as a bad move.
+      """
   }
   ```
 
@@ -1807,28 +1807,28 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   if !planet.isHabitable
   {
-    planet.terraform()
+      planet.terraform()
   }
 
   class Planet
   {
-    func terraform()
-    {
-      generateAtmosphere()
-      generateOceans()
-    }
+      func terraform()
+      {
+          generateAtmosphere()
+          generateOceans()
+      }
   }
 
   // RIGHT
   if !planet.isHabitable {
-    planet.terraform()
+      planet.terraform()
   }
 
   class Planet {
-    func terraform() {
-      generateAtmosphere()
-      generateOceans()
-    }
+      func terraform() {
+          generateAtmosphere()
+          generateOceans()
+      }
   }
   ```
 
@@ -1843,17 +1843,17 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   if
-    let star = planet.nearestStar(),
-    planet.isInHabitableZone(of: star) {
-    planet.terraform()
+      let star = planet.nearestStar(),
+      planet.isInHabitableZone(of: star) {
+      planet.terraform()
   }
 
   // RIGHT
   if
-    let star = planet.nearestStar(),
-    planet.isInHabitableZone(of: star)
+      let star = planet.nearestStar(),
+      planet.isInHabitableZone(of: star)
   {
-    planet.terraform()
+      planet.terraform()
   }
   ```
 
@@ -1868,26 +1868,26 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   struct Planet{
-    ...
+      ...
   }
 
   // WRONG
   if condition{
-    ...
+      ...
   }else{
-    ...
+      ...
   }
 
   // RIGHT
   struct Planet {
-    ...
+      ...
   }
 
   // RIGHT
   if condition {
-    ...
+      ...
   } else {
-    ...
+      ...
   }
   ```
 
@@ -1929,19 +1929,19 @@ _You can enable the following settings in Xcode by running [this script](https:/
   * have atmospheres and bodies of water to support life.
   */
   class Planet {
-    /**
-      Terraforms the planet, by adding an atmosphere and ocean that is hospitable for life.
-    */
-    func terraform() {
-      /*
-      Generate the atmosphere first, before generating the ocean.
-      Otherwise, the water will just boil off immediately.
+      /**
+          Terraforms the planet, by adding an atmosphere and ocean that is hospitable for life.
       */
-      generateAtmosphere()
+      func terraform() {
+          /*
+          Generate the atmosphere first, before generating the ocean.
+          Otherwise, the water will just boil off immediately.
+          */
+          generateAtmosphere()
 
-      /* Now that we have an atmosphere, it's safe to generate the ocean */
-      generateOceans()
-    }
+          /* Now that we have an atmosphere, it's safe to generate the ocean */
+          generateOceans()
+      }
   }
 
   // RIGHT
@@ -1951,15 +1951,15 @@ _You can enable the following settings in Xcode by running [this script](https:/
   /// Planets have many properties. For example, the best planets
   /// have atmospheres and bodies of water to support life.
   class Planet {
-    /// Terraforms the planet, by adding an atmosphere and ocean that is hospitable for life.
-    func terraform() {
-      // Generate the atmosphere first, before generating the ocean.
-      // Otherwise, the water will just boil off immediately.
-      generateAtmosphere()
+      /// Terraforms the planet, by adding an atmosphere and ocean that is hospitable for life.
+      func terraform() {
+          // Generate the atmosphere first, before generating the ocean.
+          // Otherwise, the water will just boil off immediately.
+          generateAtmosphere()
 
-      // Now that we have an atmosphere, it's safe to generate the ocean
-      generateOceans()
-    }
+          // Now that we have an atmosphere, it's safe to generate the ocean
+          generateOceans()
+      }
   }
   ```
 
@@ -1976,56 +1976,56 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // A planet that exists somewhere in the universe.
   class Planet {
-    // Data about the composition and density of the planet's atmosphere if present.
-    var atmosphere: Atmosphere?
+      // Data about the composition and density of the planet's atmosphere if present.
+      var atmosphere: Atmosphere?
 
-    // Data about the size, location, and composition of large bodies of water on the planet's surface.
-    var oceans: [Ocean]
+      // Data about the size, location, and composition of large bodies of water on the planet's surface.
+      var oceans: [Ocean]
 
-    // Terraforms the planet, by adding an atmosphere and ocean that is hospitable for life.
-    func terraform() {
-      // This gas composition has a pretty good track record so far!
-      let composition = AtmosphereComposition(nitrogen: 0.78, oxygen: 0.22)
+      // Terraforms the planet, by adding an atmosphere and ocean that is hospitable for life.
+      func terraform() {
+          // This gas composition has a pretty good track record so far!
+          let composition = AtmosphereComposition(nitrogen: 0.78, oxygen: 0.22)
 
-      // Generate the atmosphere first, then the oceans. Otherwise, the water will just boil off immediately.
-      generateAtmosphere(using: composition)
-      generateOceans()
-    }
+          // Generate the atmosphere first, then the oceans. Otherwise, the water will just boil off immediately.
+          generateAtmosphere(using: composition)
+          generateOceans()
+      }
   }
 
   // RIGHT
 
   /// A planet that exists somewhere in the universe.
   class Planet {
-    /// Data about the composition and density of the planet's atmosphere if present.
-    var atmosphere: Atmosphere?
+      /// Data about the composition and density of the planet's atmosphere if present.
+      var atmosphere: Atmosphere?
 
-    /// Data about the size, location, and composition of large bodies of water on the planet's surface.
-    var oceans: [Ocean]
+      /// Data about the size, location, and composition of large bodies of water on the planet's surface.
+      var oceans: [Ocean]
 
-    /// Terraforms the planet, by adding an atmosphere and ocean that is hospitable for life.
-    func terraform() {
-      // This gas composition has a pretty good track record so far!
-      let composition = AtmosphereComposition(nitrogen: 0.78, oxygen: 0.22)
+      /// Terraforms the planet, by adding an atmosphere and ocean that is hospitable for life.
+      func terraform() {
+          // This gas composition has a pretty good track record so far!
+          let composition = AtmosphereComposition(nitrogen: 0.78, oxygen: 0.22)
 
-      // Generate the atmosphere first, then the oceans. Otherwise, the water will just boil off immediately.
-      generateAtmosphere(using: composition)
-      generateOceans()
-    }
+          // Generate the atmosphere first, then the oceans. Otherwise, the water will just boil off immediately.
+          generateAtmosphere(using: composition)
+          generateOceans()
+      }
   }
 
   // ALSO RIGHT:
 
   func terraform() {
-    /// This gas composition has a pretty good track record so far!
-    ///  - Doc comments are not required before local declarations in function scopes, but are permitted.
-    let composition = AtmosphereComposition(nitrogen: 0.78, oxygen: 0.22)
+      /// This gas composition has a pretty good track record so far!
+      ///  - Doc comments are not required before local declarations in function scopes, but are permitted.
+      let composition = AtmosphereComposition(nitrogen: 0.78, oxygen: 0.22)
 
-    /// Generate the `atmosphere` first, **then** the `oceans`. Otherwise, the water will just boil off immediately.
-    ///  - Comments not preceding declarations can use doc comments, and will not be autocorrected into regular comments.
-    ///    This can be useful because Xcode applies markdown styling to doc comments but not regular comments.
-    generateAtmosphere(using: composition)
-    generateOceans()
+      /// Generate the `atmosphere` first, **then** the `oceans`. Otherwise, the water will just boil off immediately.
+      ///  - Comments not preceding declarations can use doc comments, and will not be autocorrected into regular comments.
+      ///    This can be useful because Xcode applies markdown styling to doc comments but not regular comments.
+      generateAtmosphere(using: composition)
+      generateOceans()
   }
   ```
 
@@ -2038,16 +2038,16 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // swiftformat:sort
   enum FeatureFlags {
-    case allowFasterThanLightTravel
-    case disableGravity
-    case enableDarkEnergy
-    case enableDarkMatter
+      case allowFasterThanLightTravel
+      case disableGravity
+      case enableDarkEnergy
+      case enableDarkMatter
   }
 
   // TODO: There are no more production consumers of this legacy model, so we
   // should detangle the remaining code dependencies and clean it up.
   struct LegacyGeocentricUniverseModel {
-    ...
+      ...
   }
   ```
 
@@ -2057,32 +2057,32 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // RIGHT
 
   enum Planet {
-    // The inner planets
-    case mercury
-    case venus
-    case earth
-    case mars
+      // The inner planets
+      case mercury
+      case venus
+      case earth
+      case mars
 
-    // The outer planets
-    case jupiter
-    case saturn
-    case uranus
-    case neptune
+      // The outer planets
+      case jupiter
+      case saturn
+      case uranus
+      case neptune
   }
 
   // ALSO RIGHT
 
   enum Planet {
-    /// The smallest planet
-    case mercury
-    case venus
-    case earth
-    case mars
-    /// The largest planet
-    case jupiter
-    case saturn
-    case uranus
-    case neptune
+      /// The smallest planet
+      case mercury
+      case venus
+      case earth
+      case mars
+      /// The largest planet
+      case jupiter
+      case saturn
+      case uranus
+      case neptune
   }
   ```
 
@@ -2129,9 +2129,9 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ///A spacecraft with incredible performance characteristics
   struct Spaceship {
 
-    func travelFasterThanLight() {/*unimplemented*/}
+      func travelFasterThanLight() {/*unimplemented*/}
 
-    func travelBackInTime() { }//TODO: research whether or not this is possible
+      func travelBackInTime() { }//TODO: research whether or not this is possible
 
   }
 
@@ -2140,9 +2140,9 @@ _You can enable the following settings in Xcode by running [this script](https:/
   /// A spacecraft with incredible performance characteristics
   struct Spaceship {
 
-    func travelFasterThanLight() { /* unimplemented */ }
+      func travelFasterThanLight() { /* unimplemented */ }
 
-    func travelBackInTime() { } // TODO: research whether or not this is possible
+      func travelBackInTime() { } // TODO: research whether or not this is possible
 
   }
   ```
@@ -2160,20 +2160,20 @@ _You can enable the following settings in Xcode by running [this script](https:/
   extension Spaceship: Trackable {}
 
   extension SpaceshipView {
-    var accessibilityIdentifier: String {
-      get { spaceship.name }
-      set {}
-    }
+      var accessibilityIdentifier: String {
+          get { spaceship.name }
+          set {}
+      }
   }
 
   // RIGHT
   extension Spaceship: Trackable { }
 
   extension SpaceshipView {
-    var accessibilityIdentifier: String {
-      get { spaceship.name }
-      set { }
-    }
+      var accessibilityIdentifier: String {
+          get { spaceship.name }
+          set { }
+      }
   }
   ```
 
@@ -2196,24 +2196,24 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   planets.forEach { planet in
-    planet.terraform()
+      planet.terraform()
   }
 
   // WRONG
   planets.forEach {
-    $0.terraform()
+      $0.terraform()
   }
 
   // RIGHT
   for planet in planets {
-    planet.terraform()
+      planet.terraform()
   }
 
   // ALSO FINE, since forEach is useful when paired with other functional methods in a chain.
   planets
-    .filter { !$0.isGasGiant }
-    .map { PlanetTerraformer(planet: $0) }
-    .forEach { $0.terraform() }
+      .filter { !$0.isGasGiant }
+      .map { PlanetTerraformer(planet: $0) }
+      .forEach { $0.terraform() }
   ```
 
   </details>
@@ -2229,12 +2229,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   func doSomething() -> Void {
-    ...
+      ...
   }
 
   // RIGHT
   func doSomething() {
-    ...
+      ...
   }
   ```
 
@@ -2249,69 +2249,69 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   class Universe {
 
-    // WRONG
-    func generateStars(at location: Point, count: Int, color: StarColor, withAverageDistance averageDistance: Float) -> String {
-      // This is too long and will probably auto-wrap in a weird way
-    }
+      // WRONG
+      func generateStars(at location: Point, count: Int, color: StarColor, withAverageDistance averageDistance: Float) -> String {
+          // This is too long and will probably auto-wrap in a weird way
+      }
 
-    // WRONG
-    func generateStars(at location: Point,
-                       count: Int,
-                       color: StarColor,
-                       withAverageDistance averageDistance: Float) -> String
-    {
-      // Xcode indents all the arguments
-    }
+      // WRONG
+      func generateStars(at location: Point,
+                         count: Int,
+                         color: StarColor,
+                         withAverageDistance averageDistance: Float) -> String
+      {
+          // Xcode indents all the arguments
+      }
 
-    // WRONG
-    func generateStars(
-      at location: Point,
-      count: Int,
-      color: StarColor,
-      withAverageDistance averageDistance: Float) -> String {
-      populateUniverse() // this line blends in with the argument list
-    }
+      // WRONG
+      func generateStars(
+          at location: Point,
+          count: Int,
+          color: StarColor,
+          withAverageDistance averageDistance: Float) -> String {
+          populateUniverse() // this line blends in with the argument list
+      }
 
-    // WRONG
-    func generateStars(
-      at location: Point,
-      count: Int,
-      color: StarColor,
-      withAverageDistance averageDistance: Float) throws
-      -> String {
-      populateUniverse() // this line blends in with the argument list
-    }
+      // WRONG
+      func generateStars(
+          at location: Point,
+          count: Int,
+          color: StarColor,
+          withAverageDistance averageDistance: Float) throws
+          -> String {
+          populateUniverse() // this line blends in with the argument list
+      }
 
-    // WRONG
-    func generateStars(
-      at location: Point,
-      count: Int,
-      color: StarColor,
-      withAverageDistance averageDistance: Float) async throws // these effects are easy to miss since they're visually associated with the last parameter
-      -> String
-    {
-      populateUniverse()
-    }
+      // WRONG
+      func generateStars(
+          at location: Point,
+          count: Int,
+          color: StarColor,
+          withAverageDistance averageDistance: Float) async throws // these effects are easy to miss since they're visually associated with the last parameter
+          -> String
+      {
+          populateUniverse()
+      }
 
-    // RIGHT
-    func generateStars(
-      at location: Point,
-      count: Int,
-      color: StarColor,
-      withAverageDistance averageDistance: Float
-    ) -> String {
-      populateUniverse()
-    }
+      // RIGHT
+      func generateStars(
+          at location: Point,
+          count: Int,
+          color: StarColor,
+          withAverageDistance averageDistance: Float
+      ) -> String {
+          populateUniverse()
+      }
 
-    // RIGHT
-    func generateStars(
-      at location: Point,
-      count: Int,
-      color: StarColor,
-      withAverageDistance averageDistance: Float
-    ) async throws -> String {
-      populateUniverse()
-    }
+      // RIGHT
+      func generateStars(
+          at location: Point,
+          count: Int,
+          color: StarColor,
+          withAverageDistance averageDistance: Float
+      ) async throws -> String {
+          populateUniverse()
+      }
   }
   ```
 
@@ -2335,19 +2335,19 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // RIGHT
   var galaxy: String {
-    "Milky Way"
+      "Milky Way"
   }
 
   func launchRocket() {
-    print("Launching")
+      print("Launching")
   }
 
   init() {
-    self.value = 0
+      self.value = 0
   }
 
   subscript(index: Int) -> Int {
-    array[index]
+      array[index]
   }
   ```
 
@@ -2356,8 +2356,8 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // RIGHT
   protocol SpaceshipEngine {
-    func engage() -> Bool
-    var fuelLevel: Double { get }
+      func engage() -> Bool
+      var fuelLevel: Double { get }
   }
   ```
 
@@ -2381,29 +2381,29 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // WRONG
   universe.generateStars(
-    at: location,
-    count: 5,
-    color: starColor,
-    withAverageDistance: 4)
+      at: location,
+      count: 5,
+      color: starColor,
+      withAverageDistance: 4)
 
   // WRONG
   universe.generate(5,
-    .stars,
-    at: location)
+      .stars,
+      at: location)
 
   // RIGHT
   universe.generateStars(
-    at: location,
-    count: 5,
-    color: starColor,
-    withAverageDistance: 4
+      at: location,
+      count: 5,
+      color: starColor,
+      withAverageDistance: 4
   )
 
   // RIGHT
   universe.generate(
-    5,
-    .stars,
-    at: location
+      5,
+      .stars,
+      at: location
   )
   ```
 
@@ -2426,26 +2426,26 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // In this method, the `newCondition` parameter is unused.
   // This is actually a logical error, and is easy to miss, but compiles without warning.
   func updateWeather(_ newCondition: WeatherCondition) -> Weather {
-    var updatedWeather = self
-    updatedWeather.condition = condition // this mistake inadvertently makes this method unable to change the weather condition
-    return updatedWeather
+      var updatedWeather = self
+      updatedWeather.condition = condition // this mistake inadvertently makes this method unable to change the weather condition
+      return updatedWeather
   }
 
   // In this method, the `color` parameter is unused.
   // Is this a logical error (e.g. should it be passed through to the `universe.generateStars` method call),
   // or is this an unused argument that should be removed from the method signature?
   func generateUniverseWithStars(
-    at location: Point,
-    count: Int,
-    color: StarColor,
-    withAverageDistance averageDistance: Float
+      at location: Point,
+      count: Int,
+      color: StarColor,
+      withAverageDistance averageDistance: Float
   ) {
-    let universe = generateUniverse()
-    universe.generateStars(
-      at: location,
-      count: count,
-      withAverageDistance: averageDistance
-    )
+      let universe = generateUniverse()
+      universe.generateStars(
+          at: location,
+          count: count,
+          withAverageDistance: averageDistance
+      )
   }
   ```
 
@@ -2456,26 +2456,26 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // makes it more clear that the parameter is unused, which makes it
   // easier to spot the logical error.
   func updateWeather(_: WeatherCondition) -> Weather {
-    var updatedWeather = self
-    updatedWeather.condition = condition
-    return updatedWeather
+      var updatedWeather = self
+      updatedWeather.condition = condition
+      return updatedWeather
   }
 
   // The underscore makes it more clear that the `color` parameter is unused.
   // This method argument can either be removed if truly unnecessary,
   // or passed through to `universe.generateStars` to correct the logical error.
   func generateUniverseWithStars(
-    at location: Point,
-    count: Int,
-    color _: StarColor,
-    withAverageDistance averageDistance: Float
+      at location: Point,
+      count: Int,
+      color _: StarColor,
+      withAverageDistance averageDistance: Float
   ) {
-    let universe = generateUniverse()
-    universe.generateStars(
-      at: location,
-      count: count,
-      withAverageDistance: averageDistance
-    )
+      let universe = generateUniverse()
+      universe.generateStars(
+          at: location,
+          count: count,
+          withAverageDistance: averageDistance
+      )
   }
   ```
 
@@ -2494,34 +2494,34 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   var innerPlanetNames: [String] {
-    planets
-      .filter { $0.isInnerPlanet }
+      planets
+          .filter { $0.isInnerPlanet }
 
-      .map { $0.name }
+          .map { $0.name }
   }
 
   // WRONG
   var innerPlanetNames: [String] {
-    planets
-      .filter { $0.isInnerPlanet }
+      planets
+          .filter { $0.isInnerPlanet }
 
-      // Gets the name of the inner planet
-      .map { $0.name }
+          // Gets the name of the inner planet
+          .map { $0.name }
   }
 
   // RIGHT
   var innerPlanetNames: [String] {
-    planets
-      .filter { $0.isInnerPlanet }
-      .map { $0.name }
+      planets
+          .filter { $0.isInnerPlanet }
+          .map { $0.name }
   }
 
   // RIGHT
   var innerPlanetNames: [String] {
-    planets
-      .filter { $0.isInnerPlanet }
-      // Gets the name of the inner planet
-      .map { $0.name }
+      planets
+          .filter { $0.isInnerPlanet }
+          // Gets the name of the inner planet
+          .map { $0.name }
   }
   ```
 
@@ -2540,20 +2540,20 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   func doSomething() throws(Never) -> Int {
-    return 0
+      return 0
   }
 
   func doSomethingElse() throws(Error) -> Int {
-    throw MyError.failed
+      throw MyError.failed
   }
 
   // RIGHT
   func doSomething() -> Int {
-    return 0
+      return 0
   }
 
   func doSomethingElse() throws -> Int {
-    throw MyError.failed
+      throw MyError.failed
   }
   ```
 
@@ -2570,12 +2570,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   func method(completion: () -> ()) {
-    ...
+      ...
   }
 
   // RIGHT
   func method(completion: () -> Void) {
-    ...
+      ...
   }
   ```
 
@@ -2595,12 +2595,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   someAsyncThing() { argument1, argument2, argument3 in
-    print(argument3)
+      print(argument3)
   }
 
   // RIGHT
   someAsyncThing() { _, _, argument3 in
-    print(argument3)
+      print(argument3)
   }
   ```
 
@@ -2627,21 +2627,21 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // WRONG
   let evenSquares = numbers
-    .filter{
-      $0.isMultiple(of: 2)
-    }
-    .map{
-      $0 * $0
-    }
+      .filter{
+          $0.isMultiple(of: 2)
+      }
+      .map{
+          $0 * $0
+      }
 
   // RIGHT
   let evenSquares = numbers
-    .filter {
-      $0.isMultiple(of: 2)
-    }
-    .map {
-      $0 * $0
-    }
+      .filter {
+          $0.isMultiple(of: 2)
+      }
+      .map {
+          $0 * $0
+      }
   ```
 
   </details>
@@ -2655,12 +2655,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   someAsyncThing() { argument -> Void in
-    ...
+      ...
   }
 
   // RIGHT
   someAsyncThing() { argument in
-    ...
+      ...
   }
   ```
 
@@ -2701,20 +2701,20 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG: Crashes if `self` has been deallocated when closures are called.
   final class SpaceshipNavigationService {
-    let spaceship: Spaceship
-    let planet: Planet
+      let spaceship: Spaceship
+      let planet: Planet
 
-    func colonizePlanet() {
-      spaceship.travel(to: planet, onArrival: { [unowned self] in
-        planet.colonize()
-      })
-    }
+      func colonizePlanet() {
+          spaceship.travel(to: planet, onArrival: { [unowned self] in
+              planet.colonize()
+          })
+      }
 
-    func exploreSystem() {
-      spaceship.travel(to: planet, nextDestination: { [unowned self] in
-        planet.moons?.first
-      })
-    }
+      func exploreSystem() {
+          spaceship.travel(to: planet, nextDestination: { [unowned self] in
+              planet.moons?.first
+          })
+      }
   }
   ```
 
@@ -2723,24 +2723,24 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // RIGHT: Uses a `weak self` capture and explicitly handles the case where `self` has been deallocated
   final class SpaceshipNavigationService {
-    let spaceship: Spaceship
-    let planet: Planet
+      let spaceship: Spaceship
+      let planet: Planet
 
-    func colonizePlanet() {
-      spaceship.travel(to: planet, onArrival: { [weak self] in
-          guard let self else { return }
-          planet.colonize()
-        }
-      )
-    }
+      func colonizePlanet() {
+          spaceship.travel(to: planet, onArrival: { [weak self] in
+                  guard let self else { return }
+                  planet.colonize()
+              }
+          )
+      }
 
-    func exploreSystem() {
-      spaceship.travel(to: planet, nextDestination: { [weak self] in
-          guard let self else { return nil }
-          return planet.moons?.first
-        }
-      )
-    }
+      func exploreSystem() {
+          spaceship.travel(to: planet, nextDestination: { [weak self] in
+                  guard let self else { return nil }
+                  return planet.moons?.first
+              }
+          )
+      }
   }
   ```
 
@@ -2749,22 +2749,22 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // RIGHT: Explicitly captures `planet` instead of capturing `self`
   final class SpaceshipNavigationService {
-    let spaceship: Spaceship
-    let planet: Planet
+      let spaceship: Spaceship
+      let planet: Planet
 
-    func colonizePlanet() {
-      spaceship.travel(to: planet, onArrival: { [planet] in
-          planet.colonize()
-        }
-      )
-    }
+      func colonizePlanet() {
+          spaceship.travel(to: planet, onArrival: { [planet] in
+                  planet.colonize()
+              }
+          )
+      }
 
-    func exploreSystem() {
-      spaceship.travel(to: planet, nextDestination: { [planet] in
-          planet.moons?.first
-        }
-      )
-    }
+      func exploreSystem() {
+          spaceship.travel(to: planet, nextDestination: { [planet] in
+                  planet.moons?.first
+              }
+          )
+      }
   }
   ```
 
@@ -2795,12 +2795,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   static func == (_ lhs: MyView, _ rhs: MyView) -> Bool {
-    lhs.id == rhs.id
+      lhs.id == rhs.id
   }
 
   // RIGHT
   static func ==(_ lhs: MyView, _ rhs: MyView) -> Bool {
-    lhs.id == rhs.id
+      lhs.id == rhs.id
   }
   ```
 
@@ -2818,17 +2818,17 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // WRONG (naive wrapping)
   let destinationPlanet = solarSystem.hasPlanetsInHabitableZone ? solarSystem.planetsInHabitableZone.first :
-    solarSystem.uninhabitablePlanets.first
+      solarSystem.uninhabitablePlanets.first
 
   // WRONG (unbalanced operators)
   let destinationPlanet = solarSystem.hasPlanetsInHabitableZone ?
-    solarSystem.planetsInHabitableZone.first :
-    solarSystem.uninhabitablePlanets.first
+      solarSystem.planetsInHabitableZone.first :
+      solarSystem.uninhabitablePlanets.first
 
   // RIGHT
   let destinationPlanet = solarSystem.hasPlanetsInHabitableZone
-    ? solarSystem.planetsInHabitableZone.first
-    : solarSystem.uninhabitablePlanets.first
+      ? solarSystem.planetsInHabitableZone.first
+      : solarSystem.uninhabitablePlanets.first
   ```
 
   </details>
@@ -2842,28 +2842,28 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   if let star = planet.star, !planet.isHabitable && planet.isInHabitableZone(of: star) {
-    planet.terraform()
+      planet.terraform()
   }
 
   if
-    let star = planet.star,
-    !planet.isHabitable
-    && planet.isInHabitableZone(of: star)
+      let star = planet.star,
+      !planet.isHabitable
+      && planet.isInHabitableZone(of: star)
   {
-    planet.terraform()
+      planet.terraform()
   }
 
   // RIGHT
   if let star = planet.star, !planet.isHabitable, planet.isInHabitableZone(of: star) {
-    planet.terraform()
+      planet.terraform()
   }
 
   if
-    let star = planet.star,
-    !planet.isHabitable,
-    planet.isInHabitableZone(of: star)
+      let star = planet.star,
+      !planet.isHabitable,
+      planet.isInHabitableZone(of: star)
   {
-    planet.terraform()
+      planet.terraform()
   }
   ```
 
@@ -2928,13 +2928,13 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // WRONG
   guard let moon = planet.moon else {
-    completion(nil); return
+      completion(nil); return
   }
 
   // RIGHT
   guard let moon = planet.moon else {
-    completion(nil)
-    return
+      completion(nil)
+      return
   }
   ```
 
@@ -2954,23 +2954,23 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   class MyClass {
 
-    init() {
-      super.init()
-      someValue = 5
-    }
+      init() {
+          super.init()
+          someValue = 5
+      }
 
-    var someValue: Int!
+      var someValue: Int!
   }
 
   // RIGHT
   class MyClass {
 
-    init() {
-      someValue = 0
-      super.init()
-    }
+      init() {
+          someValue = 0
+          super.init()
+      }
 
-    var someValue: Int
+      var someValue: Int
   }
   ```
 
@@ -2993,42 +2993,42 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   struct Planet {
-    let name: String
-    let mass: Double
+      let name: String
+      let mass: Double
 
-    init(name: String, mass: Double) {
-      self.name = name
-      self.mass = mass
-    }
+      init(name: String, mass: Double) {
+          self.name = name
+          self.mass = mass
+      }
   }
 
   // RIGHT
   struct Planet {
-    let name: String
-    let mass: Double
+      let name: String
+      let mass: Double
   }
 
   // ALSO RIGHT: Custom logic in initializer makes it non-redundant
   struct Planet {
-    let name: String
-    let mass: Double
+      let name: String
+      let mass: Double
 
-    init(name: String, mass: Double) {
-      self.name = name.capitalized
-      self.mass = max(0, mass)
-    }
+      init(name: String, mass: Double) {
+          self.name = name.capitalized
+          self.mass = max(0, mass)
+      }
   }
 
   // ALSO RIGHT: Public initializer is not redundant since compiler-synthesized
   // memberwise initializers are always internal
   public struct Planet {
-    public let name: String
-    public let mass: Double
+      public let name: String
+      public let mass: Double
 
-    public init(name: String, mass: Double) {
-      self.name = name
-      self.mass = mass
-    }
+      public init(name: String, mass: Double) {
+          self.name = name
+          self.mass = mass
+      }
   }
   ```
 
@@ -3037,24 +3037,24 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   /// WRONG
   struct DashboardView<Instrument: View>: View {
-    let instrument: Instrument
+      let instrument: Instrument
 
-    init(@ViewBuilder instrument: () -> Instrument) {
-      instrument = instrument()
-    }
+      init(@ViewBuilder instrument: () -> Instrument) {
+          instrument = instrument()
+      }
 
-    var content: some View {
-      instrument
-    }
+      var content: some View {
+          instrument
+      }
   }
 
   // RIGHT
   struct DashboardView<Instrument: View>: View {
-    @ViewBuilder let instrument: Instrument
+      @ViewBuilder let instrument: Instrument
 
-    var content: some View {
-      instrument
-    }
+      var content: some View {
+          instrument
+      }
   }
   ```
 
@@ -3067,30 +3067,30 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   final class TextField {
-    var text: String? {
-      didSet {
-        guard oldValue != text else {
-          return
-        }
+      var text: String? {
+          didSet {
+              guard oldValue != text else {
+                  return
+              }
 
-        // Do a bunch of text-related side-effects.
+              // Do a bunch of text-related side-effects.
+          }
       }
-    }
   }
 
   // RIGHT
   final class TextField {
-    var text: String? {
-      didSet { textDidUpdate(from: oldValue) }
-    }
-
-    private func textDidUpdate(from oldValue: String?) {
-      guard oldValue != text else {
-        return
+      var text: String? {
+          didSet { textDidUpdate(from: oldValue) }
       }
 
-      // Do a bunch of text-related side-effects.
-    }
+      private func textDidUpdate(from oldValue: String?) {
+          guard oldValue != text else {
+              return
+          }
+
+          // Do a bunch of text-related side-effects.
+      }
   }
   ```
 
@@ -3104,27 +3104,27 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   final class MyClass {
 
-    func performRequest() {
-      API.request { [weak self] response in
-        guard let self else { return }
-        // Complicated processing and side effects...
+      func performRequest() {
+          API.request { [weak self] response in
+              guard let self else { return }
+              // Complicated processing and side effects...
+          }
       }
-    }
   }
 
   // RIGHT
   final class MyClass {
 
-    func performRequest() {
-      API.request { [weak self] response in
-        guard let self else { return }
-        handleResponse(response: response)
+      func performRequest() {
+          API.request { [weak self] response in
+              guard let self else { return }
+              handleResponse(response: response)
+          }
       }
-    }
 
-    func handleResponse(_ response: SomeResponseClass) {
-      // Complicated processing and side effects...
-    }
+      func handleResponse(_ response: SomeResponseClass) {
+          // Complicated processing and side effects...
+      }
   }
   ```
 
@@ -3137,31 +3137,31 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   func land(on planet: Planet) {
-    if !planet.hasAtmosphere {
-      abortLanding()
-      return
-    }
+      if !planet.hasAtmosphere {
+          abortLanding()
+          return
+      }
 
-    engine.decelerate()
+      engine.decelerate()
   }
 
   // WRONG: Oops! forgot "return" in precondition.
   func land(on planet: Planet) {
-    if !planet.hasAtmosphere {
-      abortLanding()
-    }
+      if !planet.hasAtmosphere {
+          abortLanding()
+      }
 
-    engine.decelerate()
+      engine.decelerate()
   }
 
   // RIGHT
   func land(on planet: Planet) {
-    guard planet.hasAtmosphere else {
-      abortLanding()
-      return
-    }
+      guard planet.hasAtmosphere else {
+          abortLanding()
+          return
+      }
 
-    engine.decelerate()
+      engine.decelerate()
   }
   ```
 
@@ -3194,65 +3194,65 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   public struct Spaceship {
-    // WRONG: `engine` is used in `extension Spaceship` below,
-    // but extensions in the same file can access `private` members.
-    fileprivate let engine: AntimatterEngine
+      // WRONG: `engine` is used in `extension Spaceship` below,
+      // but extensions in the same file can access `private` members.
+      fileprivate let engine: AntimatterEngine
 
-    // WRONG: `hull` is not used by any other type, so `fileprivate` is unnecessary.
-    fileprivate let hull: Hull
+      // WRONG: `hull` is not used by any other type, so `fileprivate` is unnecessary.
+      fileprivate let hull: Hull
 
-    // RIGHT: `navigation` is used in `extension Pilot` below,
-    // so `fileprivate` is necessary here.
-    fileprivate let navigation: SpecialRelativityNavigationService
+      // RIGHT: `navigation` is used in `extension Pilot` below,
+      // so `fileprivate` is necessary here.
+      fileprivate let navigation: SpecialRelativityNavigationService
   }
 
   extension Spaceship {
-    public func blastOff() {
-      engine.start()
-    }
+      public func blastOff() {
+          engine.start()
+      }
   }
 
   extension Pilot {
-    public func chartCourse() {
-      spaceship.navigation.course = .andromedaGalaxy
-      spaceship.blastOff()
-    }
+      public func chartCourse() {
+          spaceship.navigation.course = .andromedaGalaxy
+          spaceship.blastOff()
+      }
   }
   ```
 
   ```swift
   // RIGHT
   public struct Spaceship {
-    fileprivate let navigation: SpecialRelativityNavigationService
-    private let engine: AntimatterEngine
-    private let hull: Hull
+      fileprivate let navigation: SpecialRelativityNavigationService
+      private let engine: AntimatterEngine
+      private let hull: Hull
   }
 
   extension Spaceship {
-    public func blastOff() {
-      engine.start()
-    }
+      public func blastOff() {
+          engine.start()
+      }
   }
 
   extension Pilot {
-    public func chartCourse() {
-      spaceship.navigation.course = .andromedaGalaxy
-      spaceship.blastOff()
-    }
+      public func chartCourse() {
+          spaceship.navigation.course = .andromedaGalaxy
+          spaceship.blastOff()
+      }
   }
   ```
 
   ```swift
   // WRONG: Public declarations in internal types are internal, not public.
   class Spaceship {
-    public init() { ... }
-    public func travel(to planet: Planet) { ... }
+      public init() { ... }
+      public func travel(to planet: Planet) { ... }
   }
 
   // RIGHT
   class Spaceship {
-    init() { ... }
-    func travel(to planet: Planet) { ... }
+      init() { ... }
+      func travel(to planet: Planet) { ... }
   }
   ```
 
@@ -3262,12 +3262,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // ALSO RIGHT: Using `internal` access control instead of `private`
   // to enable the synthesized memberwise init.
   struct PlanetView: View {
-    let planet: Planet
-    let star: Star
+      let planet: Planet
+      let star: Star
 
-    var body: some View {
-      ...
-    }
+      var body: some View {
+          ...
+      }
   }
   ```
 
@@ -3282,14 +3282,14 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   internal class Spaceship {
-    internal init() { ... }
-    internal func travel(to planet: Planet) { ... }
+      internal init() { ... }
+      internal func travel(to planet: Planet) { ... }
   }
 
   // RIGHT, because internal access control is implied if no other access control level is specified.
   class Spaceship {
-    init() { ... }
-    func travel(to planet: Planet) { ... }
+      init() { ... }
+      func travel(to planet: Planet) { ... }
   }
   ```
 
@@ -3308,29 +3308,29 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   public extension Universe {
-    // This declaration doesn't have an explicit access control level.
-    // In all other scopes, this would be an internal function,
-    // but because this is in a public extension, it's actually a public function.
-    func generateGalaxy() { }
+      // This declaration doesn't have an explicit access control level.
+      // In all other scopes, this would be an internal function,
+      // but because this is in a public extension, it's actually a public function.
+      func generateGalaxy() { }
   }
 
   // WRONG
   private extension Spaceship {
-    func enableHyperdrive() { }
+      func enableHyperdrive() { }
   }
 
   // RIGHT
   extension Universe {
-    // It is immediately obvious that this is a public function,
-    // even if the start of the `extension Universe` scope is off-screen.
-    public func generateGalaxy() { }
+      // It is immediately obvious that this is a public function,
+      // even if the start of the `extension Universe` scope is off-screen.
+      public func generateGalaxy() { }
   }
 
   // RIGHT
   extension Spaceship {
-    // Recall that a private extension actually has fileprivate semantics,
-    // so a declaration in a private extension is fileprivate by default.
-    fileprivate func enableHyperdrive() { }
+      // Recall that a private extension actually has fileprivate semantics,
+      // so a declaration in a private extension is fileprivate by default.
+      fileprivate func enableHyperdrive() { }
   }
   ```
 
@@ -3343,24 +3343,24 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   func age(of person: Person, bornAt: TimeInterval) -> Int {
-    ...
+      ...
   }
 
   func jump(person: Person) {
-    ...
+      ...
   }
 
   // RIGHT
   class Person {
-    var bornAt: TimeInterval
+      var bornAt: TimeInterval
 
-    var age: Int {
-      ...
-    }
+      var age: Int {
+          ...
+      }
 
-    func jump() {
-      ...
-    }
+      func jump() {
+          ...
+      }
   }
   ```
 
@@ -3382,32 +3382,32 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   struct Environment {
-    static let earthGravity = 9.8
-    static let moonGravity = 1.6
+      static let earthGravity = 9.8
+      static let moonGravity = 1.6
   }
 
   // WRONG
   struct Environment {
 
-    struct Earth {
-      static let gravity = 9.8
-    }
+      struct Earth {
+          static let gravity = 9.8
+      }
 
-    struct Moon {
-      static let gravity = 1.6
-    }
+      struct Moon {
+          static let gravity = 1.6
+      }
   }
 
   // RIGHT
   enum Environment {
 
-    enum Earth {
-      static let gravity = 9.8
-    }
+      enum Earth {
+          static let gravity = 9.8
+      }
 
-    enum Moon {
-      static let gravity = 1.6
-    }
+      enum Moon {
+          static let gravity = 1.6
+      }
   }
   ```
 
@@ -3428,72 +3428,72 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   enum ErrorType: String {
-    case error = "error"
-    case warning = "warning"
+      case error = "error"
+      case warning = "warning"
   }
 
   // WRONG
   enum UserType: String {
-    case owner
-    case manager
-    case member
+      case owner
+      case manager
+      case member
   }
 
   // WRONG
   enum Planet: Int {
-    case mercury = 0
-    case venus = 1
-    case earth = 2
-    case mars = 3
-    case jupiter = 4
-    case saturn = 5
-    case uranus = 6
-    case neptune = 7
+      case mercury = 0
+      case venus = 1
+      case earth = 2
+      case mars = 3
+      case jupiter = 4
+      case saturn = 5
+      case uranus = 6
+      case neptune = 7
   }
 
   // WRONG
   enum ErrorCode: Int {
-    case notEnoughMemory
-    case invalidResource
-    case timeOut
+      case notEnoughMemory
+      case invalidResource
+      case timeOut
   }
 
   // RIGHT
   // Relying on Swift's automatic enum values
   enum ErrorType: String {
-    case error
-    case warning
+      case error
+      case warning
   }
 
   // RIGHT
   /// These are written to a logging service. Explicit values ensure they're consistent across binaries.
   // swiftformat:disable redundantRawValues
   enum UserType: String {
-    case owner = "owner"
-    case manager = "manager"
-    case member = "member"
+      case owner = "owner"
+      case manager = "manager"
+      case member = "member"
   }
   // swiftformat:enable redundantRawValues
 
   // RIGHT
   // Relying on Swift's automatic enum values
   enum Planet: Int {
-    case mercury
-    case venus
-    case earth
-    case mars
-    case jupiter
-    case saturn
-    case uranus
-    case neptune
+      case mercury
+      case venus
+      case earth
+      case mars
+      case jupiter
+      case saturn
+      case uranus
+      case neptune
   }
 
   // RIGHT
   /// These values come from the server, so we set them here explicitly to match those values.
   enum ErrorCode: Int {
-    case notEnoughMemory = 0
-    case invalidResource = 1
-    case timeOut = 2
+      case notEnoughMemory = 0
+      case invalidResource = 1
+      case timeOut = 2
   }
   ```
 
@@ -3511,8 +3511,8 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   var results = [SomeType]()
   for element in input {
-    let result = transform(element)
-    results.append(result)
+      let result = transform(element)
+      results.append(result)
   }
 
   // RIGHT
@@ -3523,9 +3523,9 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   var results = [SomeType]()
   for element in input {
-    if let result = transformThatReturnsAnOptional(element) {
-      results.append(result)
-    }
+      if let result = transformThatReturnsAnOptional(element) {
+          results.append(result)
+      }
   }
 
   // RIGHT
@@ -3545,31 +3545,31 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   enum Fonts {
-    static var title = UIFont(...)
+      static var title = UIFont(...)
   }
 
   // RIGHT
   enum Fonts {
-    static let title = UIFont(...)
+      static let title = UIFont(...)
   }
   ```
 
   ```swift
   // WRONG
   struct FeatureState {
-    var count: Int
+      var count: Int
 
-    static var initial = FeatureState(count: 0)
+      static var initial = FeatureState(count: 0)
   }
 
   // RIGHT
   struct FeatureState {
-    var count: Int
+      var count: Int
 
-    static var initial: FeatureState {
-      // Vend static properties that are cheap to compute
-      FeatureState(count: 0)
-    }
+      static var initial: FeatureState {
+          // Vend static properties that are cheap to compute
+          FeatureState(count: 0)
+      }
   }
   ```
 
@@ -3583,27 +3583,27 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   func didSubmitText(_ text: String) {
-    // It's unclear how this was called with an empty string; our custom text field shouldn't allow this.
-    // This assert is useful for debugging but it's OK if we simply ignore this scenario in production.
-    guard !text.isEmpty else {
-      assertionFailure("Unexpected empty string")
-      return
-    }
-    ...
+      // It's unclear how this was called with an empty string; our custom text field shouldn't allow this.
+      // This assert is useful for debugging but it's OK if we simply ignore this scenario in production.
+      guard !text.isEmpty else {
+          assertionFailure("Unexpected empty string")
+          return
+      }
+      ...
   }
 
   func transformedItem(atIndex index: Int, from items: [Item]) -> Item {
-    precondition(index >= 0 && index < items.count)
-    // It's impossible to continue executing if the precondition has failed.
-    ...
+      precondition(index >= 0 && index < items.count)
+      // It's impossible to continue executing if the precondition has failed.
+      ...
   }
 
   func makeImage(name: String) -> UIImage {
-    guard let image = UIImage(named: name, in: nil, compatibleWith: nil) else {
-      fatalError("Image named \(name) couldn't be loaded.")
-      // We want the error message so we know the name of the missing image.
-    }
-    return image
+      guard let image = UIImage(named: name, in: nil, compatibleWith: nil) else {
+          fatalError("Image named \(name) couldn't be loaded.")
+          // We want the error message so we know the name of the missing image.
+      }
+      return image
   }
   ```
 
@@ -3622,32 +3622,32 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   struct SpaceshipDashboard<Left, Right>: View
-    where Left: View, Right: View
+      where Left: View, Right: View
   {
-    ...
+      ...
   }
 
   extension Spaceship {
-    func fly<Destination>(
-      to: Destination,
-      didArrive: (Destination) -> Void
-    ) where Destination: PlanetaryBody {
-      ...
-    }
+      func fly<Destination>(
+          to: Destination,
+          didArrive: (Destination) -> Void
+      ) where Destination: PlanetaryBody {
+          ...
+      }
   }
 
   // RIGHT
   struct SpaceshipDashboard<Left: View, Right: View>: View {
-    ...
+      ...
   }
 
   extension Spaceship {
-    func fly<Destination: PlanetaryBody>(
-      to: Destination,
-      didArrive: (Destination) -> Void
-    ) {
-      ...
-    }
+      func fly<Destination: PlanetaryBody>(
+          to: Destination,
+          didArrive: (Destination) -> Void
+      ) {
+          ...
+      }
   }
 
   // ALSO RIGHT: Complex constraints remain in where clause
@@ -3667,17 +3667,17 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   public class SpacecraftEngine {
-    ...
+      ...
   }
 
   // RIGHT
   public final class SpacecraftEngine {
-    ...
+      ...
   }
 
   // ALSO RIGHT: Marked as `open`, explicitly intended to be subclassed.
   open class SpacecraftEngine {
-    ...
+      ...
   }
   ```
 
@@ -3688,7 +3688,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   open class SpacecraftEngine {
-    ...
+      ...
   }
   ```
 
@@ -3696,7 +3696,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   class BaseSpacecraftEngine {
-    ...
+      ...
   }
   ```
 
@@ -3705,7 +3705,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   /// Base class for various spacecraft engine varieties
   class SpacecraftEngine {
-    ...
+      ...
   }
   ```
 
@@ -3713,12 +3713,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   class SpacecraftEngine {
-    ...
+      ...
   }
 
   #if DEBUG
   class MockSpacecraftEngine: SpacecraftEngine {
-    ...
+      ...
   }
   #endif
   ```
@@ -3738,12 +3738,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   class Fruit {
-    class func eatFruits(_ fruits: [Fruit]) { ... }
+      class func eatFruits(_ fruits: [Fruit]) { ... }
   }
 
   // RIGHT
   class Fruit {
-    static func eatFruits(_ fruits: [Fruit]) { ... }
+      static func eatFruits(_ fruits: [Fruit]) { ... }
   }
   ```
 
@@ -3761,57 +3761,57 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // NOT PREFERRED
   switch trafficLight {
   case .greenLight:
-    // Move your vehicle
+      // Move your vehicle
   default:
-    // Stop your vehicle
+      // Stop your vehicle
   }
 
   // PREFERRED
   switch trafficLight {
   case .greenLight:
-    // Move your vehicle
+      // Move your vehicle
   case .yellowLight, .redLight:
-    // Stop your vehicle
+      // Stop your vehicle
   }
 
   // COUNTEREXAMPLES
 
   enum TaskState {
-    case pending
-    case running
-    case canceling
-    case success(Success)
-    case failure(Error)
+      case pending
+      case running
+      case canceling
+      case success(Success)
+      case failure(Error)
 
-    // We expect that this property will remain valid if additional cases are added to the enumeration.
-    public var isRunning: Bool {
-      switch self {
-      case .running:
-        true
-      default:
-        false
+      // We expect that this property will remain valid if additional cases are added to the enumeration.
+      public var isRunning: Bool {
+          switch self {
+          case .running:
+              true
+          default:
+              false
+          }
       }
-    }
   }
 
   extension TaskState: Equatable {
-    // Explicitly listing each state would be too burdensome. Ideally this function could be implemented with a well-tested macro.
-    public static func == (lhs: TaskState, rhs: TaskState) -> Bool {
-      switch (lhs, rhs) {
-      case (.pending, .pending):
-        true
-      case (.running, .running):
-        true
-      case (.canceling, .canceling):
-        true
-      case (.success(let lhs), .success(let rhs)):
-        lhs == rhs
-      case (.failure(let lhs), .failure(let rhs)):
-        lhs == rhs
-      default:
-        false
+      // Explicitly listing each state would be too burdensome. Ideally this function could be implemented with a well-tested macro.
+      public static func == (lhs: TaskState, rhs: TaskState) -> Bool {
+          switch (lhs, rhs) {
+          case (.pending, .pending):
+              true
+          case (.running, .running):
+              true
+          case (.canceling, .canceling):
+              true
+          case (.success(let lhs), .success(let rhs)):
+              lhs == rhs
+          case (.failure(let lhs), .failure(let rhs)):
+              lhs == rhs
+          default:
+              false
+          }
       }
-    }
   }
   ```
 
@@ -3832,12 +3832,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // WRONG
   if let _ = thing {
-    doThing()
+      doThing()
   }
 
   // RIGHT
   if thing != nil {
-    doThing()
+      doThing()
   }
   ```
 
@@ -3854,70 +3854,70 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ["1", "2", "3"].compactMap { return Int($0) }
 
   var size: CGSize {
-    return CGSize(
-      width: 100.0,
-      height: 100.0
-    )
+      return CGSize(
+          width: 100.0,
+          height: 100.0
+      )
   }
 
   func makeInfoAlert(message: String) -> UIAlertController {
-    return UIAlertController(
-      title: "ℹ️ Info",
-      message: message,
-      preferredStyle: .alert
-    )
+      return UIAlertController(
+          title: "ℹ️ Info",
+          message: message,
+          preferredStyle: .alert
+      )
   }
 
   var alertTitle: String {
-    if issue.severity == .critical {
-      return "💥 Critical Error"
-    } else {
-      return "ℹ️ Info"
-    }
+      if issue.severity == .critical {
+          return "💥 Critical Error"
+      } else {
+          return "ℹ️ Info"
+      }
   }
 
   func type(of planet: Planet) -> PlanetType {
-    switch planet {
-    case .mercury, .venus, .earth, .mars:
-      return .terrestrial
-    case .jupiter, .saturn, .uranus, .neptune:
-      return .gasGiant
-    }
+      switch planet {
+      case .mercury, .venus, .earth, .mars:
+          return .terrestrial
+      case .jupiter, .saturn, .uranus, .neptune:
+          return .gasGiant
+      }
   }
 
   // RIGHT
   ["1", "2", "3"].compactMap { Int($0) }
 
   var size: CGSize {
-    CGSize(
-      width: 100.0,
-      height: 100.0
-    )
+      CGSize(
+          width: 100.0,
+          height: 100.0
+      )
   }
 
   func makeInfoAlert(message: String) -> UIAlertController {
-    UIAlertController(
-      title: "ℹ️ Info",
-      message: message,
-      preferredStyle: .alert
-    )
+      UIAlertController(
+          title: "ℹ️ Info",
+          message: message,
+          preferredStyle: .alert
+      )
   }
 
   var alertTitle: String {
-    if issue.severity == .critical {
-      "💥 Critical Error"
-    } else {
-      "ℹ️ Info"
-    }
+      if issue.severity == .critical {
+          "💥 Critical Error"
+      } else {
+          "ℹ️ Info"
+      }
   }
 
   func type(of planet: Planet) -> PlanetType {
-    switch planet {
-    case .mercury, .venus, .earth, .mars:
-      .terrestrial
-    case .jupiter, .saturn, .uranus, .neptune:
-      .gasGiant
-    }
+      switch planet {
+      case .mercury, .venus, .earth, .mars:
+          .terrestrial
+      case .jupiter, .saturn, .uranus, .neptune:
+          .gasGiant
+      }
   }
   ```
 
@@ -3990,26 +3990,26 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   lazy var universe: Universe = {
-    Universe()
+      Universe()
   }()
 
   lazy var stars = {
-    universe.generateStars(
-      at: location,
-      count: 5,
-      color: starColor,
-      withAverageDistance: 4
-    )
+      universe.generateStars(
+          at: location,
+          count: 5,
+          color: starColor,
+          withAverageDistance: 4
+      )
   }()
 
   // RIGHT
   lazy var universe = Universe()
 
   lazy var stars = universe.generateStars(
-    at: location,
-    count: 5,
-    color: starColor,
-    withAverageDistance: 4
+      at: location,
+      count: 5,
+      color: starColor,
+      withAverageDistance: 4
   )
   ```
 
@@ -4024,20 +4024,20 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   var universe: Universe {
-    get {
+      get {
+          Universe()
+      }
+  }
+
+  // RIGHT
+  var universe: Universe {
       Universe()
-    }
   }
 
   // RIGHT
   var universe: Universe {
-    Universe()
-  }
-
-  // RIGHT
-  var universe: Universe {
-    get { multiverseService.current }
-    set { multiverseService.current = newValue }
+      get { multiverseService.current }
+      set { multiverseService.current = newValue }
   }
   ```
 
@@ -4058,37 +4058,37 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   func spaceshipDashboard<WarpDriveView: View, CaptainsLogView: View>(
-    warpDrive: WarpDriveView,
-    captainsLog: CaptainsLogView
+      warpDrive: WarpDriveView,
+      captainsLog: CaptainsLogView
   ) -> some View {
-    ...
+      ...
   }
 
   func generate<Planets>(_ planets: Planets) where Planets: Collection, Planets.Element == Planet {
-    ...
+      ...
   }
 
   // RIGHT
   func spaceshipDashboard(
-    warpDrive: some View,
-    captainsLog: some View
+      warpDrive: some View,
+      captainsLog: some View
   ) -> some View {
-    ...
+      ...
   }
 
   func generate(_ planets: some Collection<Planet>) {
-    ...
+      ...
   }
 
   // Also fine, since there isn't an equivalent opaque parameter syntax for expressing
   // that two parameters in the type signature are of the same type:
   func terraform<Body: PlanetaryBody>(_ planetaryBody: Body, into terraformedBody: Body) {
-    ...
+      ...
   }
 
   // Also fine, since the generic parameter name is referenced in the function body so can't be removed:
   func terraform<Body: PlanetaryBody>(_ planetaryBody: Body) {
-    planetaryBody.generateAtmosphere(Body.idealAtmosphere)
+      planetaryBody.generateAtmosphere(Body.idealAtmosphere)
   }
   ```
 
@@ -4098,24 +4098,24 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   func assertFailure<Value>(
-    _ result: Result<Value, Error>,
-    file: StaticString = #filePath,
-    line: UInt = #line
+      _ result: Result<Value, Error>,
+      file: StaticString = #filePath,
+      line: UInt = #line
   ) {
-    if case .failure(let error) = result {
-      XCTFail(error.localizedDescription, file: file, line: line)
-    }
+      if case .failure(let error) = result {
+          XCTFail(error.localizedDescription, file: file, line: line)
+      }
   }
 
   // is equivalent to:
   func assertFailure(
-    _ result: Result<some Any, Error>,
-    file: StaticString = #filePath,
-    line: UInt = #line
+      _ result: Result<some Any, Error>,
+      file: StaticString = #filePath,
+      line: UInt = #line
   ) {
-    if case .failure(let error) = result {
-      XCTFail(error.localizedDescription, file: file, line: line)
-    }
+      if case .failure(let error) = result {
+          XCTFail(error.localizedDescription, file: file, line: line)
+      }
   }
   ```
 
@@ -4138,23 +4138,23 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // RIGHT: Simple value types are thread-safe.
   struct Planet: Sendable {
-    var mass: Double
+      var mass: Double
   }
 
   // RIGHT: Immutable classes are thread-safe.
   final class Planet: Sendable {
-    let mass: Double
+      let mass: Double
   }
 
   // WRONG: Mutable classes are not thread-safe.
   final class Planet: Sendable {
-    // ERROR: stored property 'mass' of 'Sendable'-conforming class 'Planet' is mutable
-    var mass: Double
+      // ERROR: stored property 'mass' of 'Sendable'-conforming class 'Planet' is mutable
+      var mass: Double
   }
 
   // WRONG: @unchecked is unnecessary because the compiler can prove that the type is thread-safe.
   struct Planet: @unchecked Sendable {
-    var mass: Double
+      var mass: Double
   }
   ```
 
@@ -4164,12 +4164,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // RIGHT: A mutable class isolated to the main actor is thread-safe.
   @MainActor
   final class Planet: Sendable {
-    var mass: Double
+      var mass: Double
   }
 
   // WRONG: @unchecked Sendable is unsafe because mutable classes are not thread-safe.
   struct Planet: @unchecked Sendable {
-    var mass: Double
+      var mass: Double
   }
   ```
 
@@ -4180,7 +4180,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   /// Defined in `UniverseKit` module
   class Planet: PlanetaryBody {
-    var star: Star
+      var star: Star
   }
   ```
 
@@ -4204,11 +4204,11 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   class PlanetaryBody {
-    let mass: Double
+      let mass: Double
   }
 
   class Planet: PlanetaryBody {
-    let star: Star
+      let star: Star
   }
 
   // NOT IDEAL: no compiler-enforced thread safety.
@@ -4220,12 +4220,12 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // BETTER: Compiler-enforced thread safety.
   protocol PlanetaryBody: Sendable {
-    var mass: Double { get }
+      var mass: Double { get }
   }
 
   final class Planet: PlanetaryBody, Sendable {
-    let mass: Double
-    let star: Star
+      let mass: Double
+      let star: Star
   }
   ```
 
@@ -4237,8 +4237,8 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   struct Atomic<Value> {
-    /// `value` is thread-safe because it is manually protected by a lock.
-    var value: Value { ... }
+      /// `value` is thread-safe because it is manually protected by a lock.
+      var value: Value { ... }
   }
 
   // WRONG: disallowed by linter
@@ -4258,11 +4258,11 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   ```swift
   class PlanetaryBody {
-    let mass: Double
+      let mass: Double
   }
 
   class Planet: PlanetaryBody {
-    let star: Star
+      let star: Star
   }
 
   // WRONG: disallowed by linter
@@ -4295,26 +4295,26 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   var spaceship: Spaceship {
-    let spaceship = spaceshipBuilder.build(warpDrive: warpDriveBuilder.build())
-    return spaceship
+      let spaceship = spaceshipBuilder.build(warpDrive: warpDriveBuilder.build())
+      return spaceship
   }
 
   // RIGHT
   var spaceship: Spaceship {
-    spaceshipBuilder.build(warpDrive: warpDriveBuilder.build())
+      spaceshipBuilder.build(warpDrive: warpDriveBuilder.build())
   }
 
   // WRONG
   var spaceship: Spaceship {
-    let warpDrive = warpDriveBuilder.build()
-    let spaceship = spaceshipBuilder.build(warpDrive: warpDrive)
-    return spaceship
+      let warpDrive = warpDriveBuilder.build()
+      let spaceship = spaceshipBuilder.build(warpDrive: warpDrive)
+      return spaceship
   }
 
   // RIGHT
   var spaceship: Spaceship {
-    let warpDrive = warpDriveBuilder.build()
-    return spaceshipBuilder.build(warpDrive: warpDrive)
+      let warpDrive = warpDriveBuilder.build()
+      return spaceshipBuilder.build(warpDrive: warpDrive)
   }
   ```
 
@@ -4335,33 +4335,33 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   /// WRONG: The `static func ==` implementation is redundant and error-prone.
   struct Planet: Equatable {
-    let mass: Double
-    let orbit: OrbitalElements
-    let rotation: Double
+      let mass: Double
+      let orbit: OrbitalElements
+      let rotation: Double
 
-    static func ==(lhs: Planet, rhs: Planet) -> Bool {
-      lhs.mass == rhs.mass
-        && lhs.orbit == rhs.orbit
-        && lhs.rotation == rhs.rotation
-    }
+      static func ==(lhs: Planet, rhs: Planet) -> Bool {
+          lhs.mass == rhs.mass
+              && lhs.orbit == rhs.orbit
+              && lhs.rotation == rhs.rotation
+      }
   }
 
   /// RIGHT: The `static func ==` implementation is synthesized by the compiler.
   struct Planet: Equatable {
-    let mass: Double
-    let orbit: OrbitalElements
-    let rotation: Double
+      let mass: Double
+      let orbit: OrbitalElements
+      let rotation: Double
   }
 
   /// ALSO RIGHT: The `static func ==` implementation differs from the implementation that
   /// would be synthesized by the compiler and compared all properties, so is not redundant.
   struct CelestialBody: Equatable {
-    let id: UUID
-    let orbit: OrbitalElements
+      let id: UUID
+      let orbit: OrbitalElements
 
-    static func ==(lhs: Planet, rhs: Planet) -> Bool {
-      lhs.id == rhs.id
-    }
+      static func ==(lhs: Planet, rhs: Planet) -> Bool {
+          lhs.id == rhs.id
+      }
   }
   ```
 
@@ -4370,23 +4370,23 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   /// WRONG: The `static func ==` implementation is verbose and error-prone.
   final class Planet: Equatable {
-    let mass: Double
-    let orbit: OrbitalElements
-    let rotation: Double
+      let mass: Double
+      let orbit: OrbitalElements
+      let rotation: Double
 
-    static func ==(lhs: Planet, rhs: Planet) -> Bool {
-      lhs.mass == rhs.mass
-        && lhs.orbit == rhs.orbit
-        && lhs.rotation == rhs.rotation
-    }
+      static func ==(lhs: Planet, rhs: Planet) -> Bool {
+          lhs.mass == rhs.mass
+              && lhs.orbit == rhs.orbit
+              && lhs.rotation == rhs.rotation
+      }
   }
 
   /// RIGHT: The `static func ==` implementation is generated by the `@Equatable` macro.
   @Equatable
   final class struct Planet: Equatable {
-    let mass: Double
-    let orbit: OrbitalElements
-    let rotation: Double
+      let mass: Double
+      let orbit: OrbitalElements
+      let rotation: Double
   }
   ```
 
@@ -4524,21 +4524,21 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   struct Planet {
 
-    let mass:          Double
-    let hasAtmosphere: Bool
+      let mass:          Double
+      let hasAtmosphere: Bool
 
 
-    func distance(to: Planet) { }
+      func distance(to: Planet) { }
 
   }
 
   // RIGHT
   struct Planet {
 
-    let mass: Double
-    let hasAtmosphere: Bool
+      let mass: Double
+      let hasAtmosphere: Bool
 
-    func distance(to: Planet) { }
+      func distance(to: Planet) { }
 
   }
   ```
@@ -4566,41 +4566,41 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   struct SolarSystem {
-    var numberOfPlanets: Int {
-      ...
-    }
-    func distance(to: SolarSystem) -> AstronomicalUnit {
-      ...
-    }
+      var numberOfPlanets: Int {
+          ...
+      }
+      func distance(to: SolarSystem) -> AstronomicalUnit {
+          ...
+      }
   }
   struct Galaxy {
-    func distance(to: Galaxy) -> AstronomicalUnit {
-      ...
-    }
-    func contains(_ solarSystem: SolarSystem) -> Bool {
-      ...
-    }
+      func distance(to: Galaxy) -> AstronomicalUnit {
+          ...
+      }
+      func contains(_ solarSystem: SolarSystem) -> Bool {
+          ...
+      }
   }
 
   // RIGHT
   struct SolarSystem {
-    var numberOfPlanets: Int {
-      ...
-    }
+      var numberOfPlanets: Int {
+          ...
+      }
 
-    func distance(to: SolarSystem) -> AstronomicalUnit {
-      ...
-    }
+      func distance(to: SolarSystem) -> AstronomicalUnit {
+          ...
+      }
   }
 
   struct Galaxy {
-    func distance(to: Galaxy) -> AstronomicalUnit {
-      ...
-    }
+      func distance(to: Galaxy) -> AstronomicalUnit {
+          ...
+      }
 
-    func contains(_ solarSystem: SolarSystem) -> Bool {
-      ...
-    }
+      func contains(_ solarSystem: SolarSystem) -> Bool {
+          ...
+      }
   }
   ```
 
@@ -4615,48 +4615,48 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   class Planet {
-    func terraform() {
+      func terraform() {
 
-      generateAtmosphere()
-      generateOceans()
+          generateAtmosphere()
+          generateOceans()
 
-    }
+      }
   }
 
   // RIGHT
   class Planet {
-    func terraform() {
-      generateAtmosphere()
-      generateOceans()
-    }
+      func terraform() {
+          generateAtmosphere()
+          generateOceans()
+      }
   }
 
   // ALSO RIGHT
   class Planet {
 
-    func terraform() {
-      generateAtmosphere()
-      generateOceans()
-    }
+      func terraform() {
+          generateAtmosphere()
+          generateOceans()
+      }
 
   }
 
   // WRONG: Not consistent
   class Planet {
-    func terraform() {
-      generateAtmosphere()
-      generateOceans()
-    }
+      func terraform() {
+          generateAtmosphere()
+          generateOceans()
+      }
 
   }
 
   // WRONG: Not consistent
   class Planet {
 
-    func terraform() {
-      generateAtmosphere()
-      generateOceans()
-    }
+      func terraform() {
+          generateAtmosphere()
+          generateOceans()
+      }
   }
   ```
 
@@ -4731,39 +4731,39 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   class PlanetView: UIView {
 
-    static var startOfTime { -CGFloat.greatestFiniteMagnitude / 0 }
+      static var startOfTime { -CGFloat.greatestFiniteMagnitude / 0 }
 
-    var atmosphere: Atmosphere {
-       didSet {
-         print("oh my god, the atmosphere changed")
-       }
-     }
+      var atmosphere: Atmosphere {
+          didSet {
+              print("oh my god, the atmosphere changed")
+          }
+      }
 
-    override class var layerClass: AnyClass {
-      PlanetLayer.self
-    }
+      override class var layerClass: AnyClass {
+          PlanetLayer.self
+      }
 
-    var gravity: CGFloat
+      var gravity: CGFloat
 
-    static let speedOfLight: CGFloat = 300_000
+      static let speedOfLight: CGFloat = 300_000
   }
 
   // RIGHT
   class PlanetView: UIView {
 
-    static let speedOfLight: CGFloat = 300_000
-    static var startOfTime { -CGFloat.greatestFiniteMagnitude / 0 }
+      static let speedOfLight: CGFloat = 300_000
+      static var startOfTime { -CGFloat.greatestFiniteMagnitude / 0 }
 
-    override class var layerClass: AnyClass {
-      PlanetLayer.self
-    }
+      override class var layerClass: AnyClass {
+          PlanetLayer.self
+      }
 
-    var gravity: CGFloat
-    var atmosphere: Atmosphere {
-       didSet {
-         print("oh my god, the atmosphere changed")
-       }
-     }
+      var gravity: CGFloat
+      var atmosphere: Atmosphere {
+          didSet {
+              print("oh my god, the atmosphere changed")
+          }
+      }
   }
   ```
 
@@ -4774,39 +4774,39 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   struct CustomSlider: View {
 
-    // MARK: Internal
+      // MARK: Internal
 
-    var body: some View {
-      ...
-    }
+      var body: some View {
+          ...
+      }
 
-    // MARK: Private
+      // MARK: Private
 
-    @Binding private var value: Value
-    private let range: ClosedRange<Double>
-    @Environment(\.sliderStyle) private var style
-    private let step: Double.Stride
-    @Environment(\.layoutDirection) private var layoutDirection
+      @Binding private var value: Value
+      private let range: ClosedRange<Double>
+      @Environment(\.sliderStyle) private var style
+      private let step: Double.Stride
+      @Environment(\.layoutDirection) private var layoutDirection
   }
 
   // RIGHT
 
   struct CustomSlider: View {
 
-    // MARK: Internal
+      // MARK: Internal
 
-    var body: some View {
-      ...
-    }
+      var body: some View {
+          ...
+      }
 
-    // MARK: Private
+      // MARK: Private
 
-    @Environment(\.sliderStyle) private var style
-    @Environment(\.layoutDirection) private var layoutDirection
-    @Binding private var value: Value
+      @Environment(\.sliderStyle) private var style
+      @Environment(\.layoutDirection) private var layoutDirection
+      @Binding private var value: Value
 
-    private let range: ClosedRange<Double>
-    private let step: Double.Stride
+      private let range: ClosedRange<Double>
+      private let step: Double.Stride
   }
   ```
 
@@ -4816,27 +4816,27 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   struct CustomSlider: View {
 
-    @Binding private var value: Value
-    @State private var foo = Foo()
-    @Environment(\.sliderStyle) private var style
-    @State private var bar = Bar()
-    @Environment(\.layoutDirection) private var layoutDirection
+      @Binding private var value: Value
+      @State private var foo = Foo()
+      @Environment(\.sliderStyle) private var style
+      @State private var bar = Bar()
+      @Environment(\.layoutDirection) private var layoutDirection
 
-    private let range: ClosedRange<Double>
-    private let step: Double.Stride
+      private let range: ClosedRange<Double>
+      private let step: Double.Stride
   }
 
   // RIGHT
   struct CustomSlider: View {
 
-    @Binding private var value: Value
-    @State private var foo = Foo()
-    @State private var bar = Bar()
-    @Environment(\.sliderStyle) private var style
-    @Environment(\.layoutDirection) private var layoutDirection
+      @Binding private var value: Value
+      @State private var foo = Foo()
+      @State private var bar = Bar()
+      @Environment(\.sliderStyle) private var style
+      @Environment(\.layoutDirection) private var layoutDirection
 
-    private let range: ClosedRange<Double>
-    private let step: Double.Stride
+      private let range: ClosedRange<Double>
+      private let step: Double.Stride
   }
   ```
 
@@ -4882,7 +4882,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
   let (jupiter, saturn) = (planets[4], planets[5])
 
   enum IceGiants {
-    case neptune, uranus
+      case neptune, uranus
   }
 
   // RIGHT
@@ -4896,8 +4896,8 @@ _You can enable the following settings in Xcode by running [this script](https:/
   let saturn = planets[5]
 
   enum IceGiants {
-    case neptune
-    case uranus
+      case neptune
+      case uranus
   }
 
   // ALSO RIGHT: Tuple destructing is fine for values like function call results.
@@ -4926,34 +4926,34 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG
   struct PlanetView: View {
 
-    // MARK: Lifecycle
+      // MARK: Lifecycle
 
-    init(planet: Planet, star: Star) {
-      self.planet = planet
-      self.star = star
-    }
+      init(planet: Planet, star: Star) {
+          self.planet = planet
+          self.star = star
+      }
 
-    // MARK: Internal
+      // MARK: Internal
 
-    var body: some View {
-      ...
-    }
+      var body: some View {
+          ...
+      }
 
-    // MARK: Private
+      // MARK: Private
 
-    private let planet: Planet
-    private let star: Star
+      private let planet: Planet
+      private let star: Star
 
   }
 
   // RIGHT
   struct PlanetView: View {
-    let planet: Planet
-    let star: Star
+      let planet: Planet
+      let star: Star
 
-    var body: some View {
-      ...
-    }
+      var body: some View {
+          ...
+      }
   }
   ```
 
@@ -4963,19 +4963,19 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // RIGHT
   struct PlanetView: View {
 
-    // MARK: Internal
+      // MARK: Internal
 
-    let planet: Planet
-    let star: Star
+      let planet: Planet
+      let star: Star
 
-    var body: some View {
-      ...
-    }
+      var body: some View {
+          ...
+      }
 
-    // MARK: Private
+      // MARK: Private
 
-    @State private var isRotating = false
-    @Environment(\.dismiss) private var dismiss
+      @State private var isRotating = false
+      @Environment(\.dismiss) private var dismiss
 
   }
   ```
@@ -4995,19 +4995,19 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   /// WRONG: The `EnvironmentValues` property depends on `IsSelectedEnvironmentKey`
   struct IsSelectedEnvironmentKey: EnvironmentKey {
-    static var defaultValue: Bool { false }
+      static var defaultValue: Bool { false }
   }
 
   extension EnvironmentValues {
-    var isSelected: Bool {
-     get { self[IsSelectedEnvironmentKey.self] }
-     set { self[IsSelectedEnvironmentKey.self] = newValue }
-    }
+      var isSelected: Bool {
+          get { self[IsSelectedEnvironmentKey.self] }
+          set { self[IsSelectedEnvironmentKey.self] = newValue }
+      }
   }
 
   /// RIGHT: The `EnvironmentValues` property uses the @Entry macro
   extension EnvironmentValues {
-    @Entry var isSelected: Bool = false
+      @Entry var isSelected: Bool = false
   }
   ```
 
@@ -5026,44 +5026,44 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   struct PlanetView: View {
-    @ViewBuilder
-    var body: some View {
-      Text("Hello, World!")
-    }
+      @ViewBuilder
+      var body: some View {
+          Text("Hello, World!")
+      }
 
-    @ViewBuilder
-    var subtitle: some View {
-      Text("Subtitle")
-    }
+      @ViewBuilder
+      var subtitle: some View {
+          Text("Subtitle")
+      }
   }
 
   // RIGHT
   struct PlanetView: View {
-    var body: some View {
-      Text("Hello, World!")
-    }
+      var body: some View {
+          Text("Hello, World!")
+      }
 
-    var subtitle: some View {
-      Text("Subtitle")
-    }
+      var subtitle: some View {
+          Text("Subtitle")
+      }
   }
 
   // ALSO RIGHT: @ViewBuilder is necessary for conditionals
   struct ConditionalView: View {
-    var showDetails: Bool
+      var showDetails: Bool
 
-    var body: some View {
-      title
-    }
-
-    @ViewBuilder
-    var title: some View {
-      if showDetails {
-        Text("Details")
-      } else {
-        Text("Summary")
+      var body: some View {
+          title
       }
-    }
+
+      @ViewBuilder
+      var title: some View {
+          if showDetails {
+              Text("Details")
+          } else {
+              Text("Summary")
+          }
+      }
   }
   ```
 
@@ -5078,18 +5078,18 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   var body: some View {
-    if condition {
-      Text("Launch")
-    } else {
-      EmptyView()
-    }
+      if condition {
+          Text("Launch")
+      } else {
+          EmptyView()
+      }
   }
 
   // RIGHT
   var body: some View {
-    if condition {
-      Text("Launch")
-    }
+      if condition {
+          Text("Launch")
+      }
   }
   ```
 
@@ -5108,44 +5108,44 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
   struct SpacecraftView: View {
-    var body: some View {
-      Group {
-        Text("Voyager")
-        instruments
+      var body: some View {
+          Group {
+              Text("Voyager")
+              instruments
+          }
       }
-    }
 
-    var instruments: some View {
-      Group {
-        Text("Altimeter")
-        Text("Gyroscope")
+      var instruments: some View {
+          Group {
+              Text("Altimeter")
+              Text("Gyroscope")
+          }
       }
-    }
   }
 
   // RIGHT
   struct SpacecraftView: View {
-    var body: some View {
-      Text("Voyager")
-      instruments
-    }
+      var body: some View {
+          Text("Voyager")
+          instruments
+      }
 
-    @ViewBuilder
-    var instruments: some View {
-      Text("Altimeter")
-      Text("Gyroscope")
-    }
+      @ViewBuilder
+      var instruments: some View {
+          Text("Altimeter")
+          Text("Gyroscope")
+      }
   }
 
   // ALSO RIGHT: Group is not redundant when a modifier is applied to it
   struct SpacecraftView: View {
-    var body: some View {
-      Group {
-        Text("Voyager")
-        instruments
+      var body: some View {
+          Group {
+              Text("Voyager")
+              instruments
+          }
+          .padding()
       }
-      .padding()
-    }
   }
   ```
 
@@ -5176,27 +5176,27 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   /// WRONG
   struct SpaceshipTests {
-    @Test
-    func testWarpDriveEnablesFTLTravel() { ... }
+      @Test
+      func testWarpDriveEnablesFTLTravel() { ... }
   }
 
   // WRONG
   @Suite("Spaceship tests")
   struct SpaceshipTests {
-    @Test("Warp drive enables FTL travel")
-    func warpDriveEnablesFTLTravel() { ... }
+      @Test("Warp drive enables FTL travel")
+      func warpDriveEnablesFTLTravel() { ... }
   }
 
   /// WRONG
   struct `Spaceship tests` {
-    @Test
-    func `warp drive enables FTL travel`() { ... }
+      @Test
+      func `warp drive enables FTL travel`() { ... }
   }
 
   /// RIGHT
   struct SpaceshipTests {
-    @Test
-    func `warp drive enables FTL travel`() { ... }
+      @Test
+      func `warp drive enables FTL travel`() { ... }
   }
   ```
 
@@ -5214,21 +5214,21 @@ _You can enable the following settings in Xcode by running [this script](https:/
   /// WRONG
   @Suite
   struct SpaceshipTests {
-    @Test
-    func `warp drive enables FTL travel`() { ... }
+      @Test
+      func `warp drive enables FTL travel`() { ... }
   }
 
   /// RIGHT
   struct SpaceshipTests {
-    @Test
-    func `warp drive enables FTL travel`() { ... }
+      @Test
+      func `warp drive enables FTL travel`() { ... }
   }
 
   /// ALSO RIGHT: @Suite with arguments is not redundant.
   @Suite(.serialized)
   struct SpaceshipTests {
-    @Test
-    func `warp drive enables FTL travel`() { ... }
+      @Test
+      func `warp drive enables FTL travel`() { ... }
   }
   ```
 
@@ -5242,17 +5242,17 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // WRONG: Restates what #expect already reports in failure output
   @Test
   func `engage warp drive`() {
-    spaceship.engageWarpDrive()
-    #expect(spaceship.isWarpDriveActive, "Warp drive should be active")
-    #expect(spaceship.speed > lightSpeed, "Speed should be greater than light speed")
+      spaceship.engageWarpDrive()
+      #expect(spaceship.isWarpDriveActive, "Warp drive should be active")
+      #expect(spaceship.speed > lightSpeed, "Speed should be greater than light speed")
   }
 
   // RIGHT: Omits the message string, or adds valuable context
   @Test
   func `engage warp drive`() {
-    spaceship.engageWarpDrive()
-    #expect(spaceship.isWarpDriveActive)
-    #expect(spaceship.speed > lightSpeed, "Spaceship must reach light speed before the warp bubble can form")
+      spaceship.engageWarpDrive()
+      #expect(spaceship.isWarpDriveActive)
+      #expect(spaceship.speed > lightSpeed, "Spaceship must reach light speed before the warp bubble can form")
   }
   ```
 
@@ -5262,11 +5262,11 @@ _You can enable the following settings in Xcode by running [this script](https:/
   // ALSO RIGHT
   @Test
   func `engage warp drive`() {
-    spaceship.engageWarpDrive()
-    #expect(spaceship.isWarpDriveActive)
+      spaceship.engageWarpDrive()
+      #expect(spaceship.isWarpDriveActive)
 
-    // Spaceship must reach light speed before the warp bubble can form
-    #expect(spaceship.speed > lightSpeed)
+      // Spaceship must reach light speed before the warp bubble can form
+      #expect(spaceship.speed > lightSpeed)
   }
   ```
 
@@ -5284,17 +5284,17 @@ _You can enable the following settings in Xcode by running [this script](https:/
   import XCTest
 
   final class SomeTestCase: XCTestCase {
-    func test_something() throws {
-      // WRONG:
-      guard let value = optionalValue, value.matchesCondition else {
-        XCTFail()
-        return
-      }
+      func test_something() throws {
+          // WRONG:
+          guard let value = optionalValue, value.matchesCondition else {
+              XCTFail()
+              return
+          }
 
-      // RIGHT:
-      let value = try XCTUnwrap(optionalValue)
-      XCTAssert(value.matchesCondition)
-    }
+          // RIGHT:
+          let value = try XCTUnwrap(optionalValue)
+          XCTAssert(value.matchesCondition)
+      }
   }
   ```
 
@@ -5302,17 +5302,17 @@ _You can enable the following settings in Xcode by running [this script](https:/
   import Testing
 
   struct SomeTests {
-    @Test
-    func something() throws {
-      // WRONG:
-      guard let value = optionalValue, value.matchesCondition else {
-        return
-      }
+      @Test
+      func something() throws {
+          // WRONG:
+          guard let value = optionalValue, value.matchesCondition else {
+              return
+          }
 
-      // RIGHT:
-      let value = try #require(optionalValue)
-      try #require(value.matchesCondition)
-    }
+          // RIGHT:
+          let value = try #require(optionalValue)
+          try #require(value.matchesCondition)
+      }
   }
   ```
 
@@ -5322,18 +5322,18 @@ _You can enable the following settings in Xcode by running [this script](https:/
   import Testing
 
   struct SomeTests {
-    @Test
-    func something() throws {
-      // WRONG:
-      if let value = optionalValue, value.matchesCondition {
-        #expect(value.isValid)
-      }
+      @Test
+      func something() throws {
+          // WRONG:
+          if let value = optionalValue, value.matchesCondition {
+              #expect(value.isValid)
+          }
 
-      // RIGHT:
-      let value = try #require(optionalValue)
-      try #require(value.matchesCondition)
-      #expect(value.isValid)
-    }
+          // RIGHT:
+          let value = try #require(optionalValue)
+          try #require(value.matchesCondition)
+          #expect(value.isValid)
+      }
   }
   ```
 
@@ -5349,15 +5349,15 @@ _You can enable the following settings in Xcode by running [this script](https:/
   import XCTest
 
   final class SomeTestCase: XCTestCase {
-    // WRONG
-    func test_something() {
-      try! Something().doSomething()
-    }
+      // WRONG
+      func test_something() {
+          try! Something().doSomething()
+      }
 
-    // RIGHT
-    func test_something() throws {
-      try Something().doSomething()
-    }
+      // RIGHT
+      func test_something() throws {
+          try Something().doSomething()
+      }
   }
   ```
 
@@ -5365,17 +5365,17 @@ _You can enable the following settings in Xcode by running [this script](https:/
   import Testing
 
   struct SomeTests {
-    // WRONG
-    @Test
-    func something() {
-      try! Something().doSomething()
-    }
+      // WRONG
+      @Test
+      func something() {
+          try! Something().doSomething()
+      }
 
-    // RIGHT
-    @Test
-    func something() throws {
-      try Something().doSomething()
-    }
+      // RIGHT
+      @Test
+      func something() throws {
+          try Something().doSomething()
+      }
   }
   ```
 
@@ -5400,37 +5400,37 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // WRONG
   struct SpaceshipTests {
-    let spaceship = Spaceship()
+      let spaceship = Spaceship()
 
-    func launchSpaceship() {
-      spaceship.launch()
-    }
+      func launchSpaceship() {
+          spaceship.launch()
+      }
 
-    @Test
-    func spaceshipCanLaunch() {
-      launchSpaceship()
-      #expect(spaceship.hasLaunched)
-    }
+      @Test
+      func spaceshipCanLaunch() {
+          launchSpaceship()
+          #expect(spaceship.hasLaunched)
+      }
   }
 
   // RIGHT
   struct SpaceshipTests {
 
-    // MARK: Internal
+      // MARK: Internal
 
-    @Test
-    func spaceshipCanLaunch() {
-      launchSpaceship()
-      #expect(spaceship.hasLaunched)
-    }
+      @Test
+      func spaceshipCanLaunch() {
+          launchSpaceship()
+          #expect(spaceship.hasLaunched)
+      }
 
-    // MARK: Private
+      // MARK: Private
 
-    private let spaceship = Spaceship()
+      private let spaceship = Spaceship()
 
-    private func launchSpaceship() {
-      spaceship.launch()
-    }
+      private func launchSpaceship() {
+          spaceship.launch()
+      }
 
   }
   ```
@@ -5440,35 +5440,35 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // WRONG
   final class SpaceshipTests: XCTestCase {
-    let spaceship = Spaceship()
+      let spaceship = Spaceship()
 
-    func launchSpaceship() {
-      spaceship.launch()
-    }
+      func launchSpaceship() {
+          spaceship.launch()
+      }
 
-    func testSpaceshipCanLaunch() {
-      launchSpaceship()
-      XCTAssertTrue(spaceship.hasLaunched)
-    }
+      func testSpaceshipCanLaunch() {
+          launchSpaceship()
+          XCTAssertTrue(spaceship.hasLaunched)
+      }
   }
 
   // RIGHT
   final class SpaceshipTests: XCTestCase {
 
-    // MARK: Internal
+      // MARK: Internal
 
-    func testSpaceshipCanLaunch() {
-      launchSpaceship()
-      XCTAssertTrue(spaceship.hasLaunched)
-    }
+      func testSpaceshipCanLaunch() {
+          launchSpaceship()
+          XCTAssertTrue(spaceship.hasLaunched)
+      }
 
-    // MARK: Private
+      // MARK: Private
 
-    private let spaceship = Spaceship()
+      private let spaceship = Spaceship()
 
-    private func launchSpaceship() {
-      spaceship.launch()
-    }
+      private func launchSpaceship() {
+          spaceship.launch()
+      }
 
   }
   ```
@@ -5487,25 +5487,25 @@ _You can enable the following settings in Xcode by running [this script](https:/
   import XCTest
 
   final class SpaceshipTests: XCTestCase {
-    // WRONG
-    func testCanLaunchSpaceship() {
-      let spaceship = (dependencies!.shipyardService as! DefaultShipyardService).build()
-      spaceship.engine!.prepare()
-      spaceship.launch(to: nearestPlanet()!)
+      // WRONG
+      func testCanLaunchSpaceship() {
+          let spaceship = (dependencies!.shipyardService as! DefaultShipyardService).build()
+          spaceship.engine!.prepare()
+          spaceship.launch(to: nearestPlanet()!)
 
-      XCTAssertTrue(spaceship.hasLaunched)
-      XCTAssertEqual(spaceship.destination! as! Planet, nearestPlanet())
-    }
+          XCTAssertTrue(spaceship.hasLaunched)
+          XCTAssertEqual(spaceship.destination! as! Planet, nearestPlanet())
+      }
 
-    // RIGHT
-    func testCanLaunchSpaceship() throws {
-      let spaceship = try XCTUnwrap((dependencies?.shipyardService as? DefaultShipyardService)?.build())
-      spaceship.engine?.prepare()
-      spaceship.launch(to: try XCTUnwrap(nearestPlanet()))
+      // RIGHT
+      func testCanLaunchSpaceship() throws {
+          let spaceship = try XCTUnwrap((dependencies?.shipyardService as? DefaultShipyardService)?.build())
+          spaceship.engine?.prepare()
+          spaceship.launch(to: try XCTUnwrap(nearestPlanet()))
 
-      XCTAssertTrue(spaceship.hasLaunched)
-      XCTAssertEqual(spaceship.destination as? Planet, nearestPlanet())
-    }
+          XCTAssertTrue(spaceship.hasLaunched)
+          XCTAssertEqual(spaceship.destination as? Planet, nearestPlanet())
+      }
   }
   ```
 
@@ -5513,27 +5513,27 @@ _You can enable the following settings in Xcode by running [this script](https:/
   import Testing
 
   struct SpaceshipTests {
-    // WRONG
-    @Test
-    func canLaunchSpaceship() {
-      let spaceship = (dependencies!.shipyardService as! DefaultShipyardService).build()
-      spaceship.engine!.prepare()
-      spaceship.launch(to: nearestPlanet()!)
+      // WRONG
+      @Test
+      func canLaunchSpaceship() {
+          let spaceship = (dependencies!.shipyardService as! DefaultShipyardService).build()
+          spaceship.engine!.prepare()
+          spaceship.launch(to: nearestPlanet()!)
 
-      #expect(spaceship.hasLaunched)
-      #expect((spaceship.destination! as! Planet) == nearestPlanet())
-    }
+          #expect(spaceship.hasLaunched)
+          #expect((spaceship.destination! as! Planet) == nearestPlanet())
+      }
 
-    // RIGHT
-    @Test
-    func canLaunchSpaceship() throws {
-      let spaceship = try #require((dependencies?.shipyardService as? DefaultShipyardService)?.build())
-      spaceship.engine?.prepare()
-      spaceship.launch(to: try #require(nearestPlanet()))
+      // RIGHT
+      @Test
+      func canLaunchSpaceship() throws {
+          let spaceship = try #require((dependencies?.shipyardService as? DefaultShipyardService)?.build())
+          spaceship.engine?.prepare()
+          spaceship.launch(to: try #require(nearestPlanet()))
 
-      #expect(spaceship.hasLaunched)
-      #expect((spaceship.destination as? Planet) == nearestPlanet())
-    }
+          #expect(spaceship.hasLaunched)
+          #expect((spaceship.destination as? Planet) == nearestPlanet())
+      }
   }
   ```
 
@@ -5549,17 +5549,17 @@ _You can enable the following settings in Xcode by running [this script](https:/
   import XCTest
 
   final class PlanetTests: XCTestCase {
-    // WRONG
-    func test_habitability() async throws {
-      XCTAssertTrue(earth.isHabitable)
-      XCTAssertFalse(mars.isHabitable)
-    }
+      // WRONG
+      func test_habitability() async throws {
+          XCTAssertTrue(earth.isHabitable)
+          XCTAssertFalse(mars.isHabitable)
+      }
 
-    // RIGHT
-    func test_habitability() {
-      XCTAssertTrue(earth.isHabitable)
-      XCTAssertFalse(mars.isHabitable)
-    }
+      // RIGHT
+      func test_habitability() {
+          XCTAssertTrue(earth.isHabitable)
+          XCTAssertFalse(mars.isHabitable)
+      }
   }
   ```
 
@@ -5567,19 +5567,19 @@ _You can enable the following settings in Xcode by running [this script](https:/
   import Testing
 
   struct PlanetTests {
-    // WRONG
-    @Test
-    func habitability() async throws {
-      #expect(earth.isHabitable)
-      #expect(!mars.isHabitable)
-    }
+      // WRONG
+      @Test
+      func habitability() async throws {
+          #expect(earth.isHabitable)
+          #expect(!mars.isHabitable)
+      }
 
-    // RIGHT
-    @Test
-    func habitability() {
-      #expect(earth.isHabitable)
-      #expect(!mars.isHabitable)
-    }
+      // RIGHT
+      @Test
+      func habitability() {
+          #expect(earth.isHabitable)
+          #expect(!mars.isHabitable)
+      }
   }
   ```
 
@@ -5771,7 +5771,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
   import CoreImage
 
   guard
-    let kMeansFilter = CIFilter(name: "CIKMeans")
+      let kMeansFilter = CIFilter(name: "CIKMeans")
   else { return nil }
 
   kMeansFilter.setValue(ciImage, forKey: kCIInputImageKey)

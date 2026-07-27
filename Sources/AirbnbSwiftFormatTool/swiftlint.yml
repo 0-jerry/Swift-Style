@@ -16,7 +16,7 @@ excluded:
   - Pods
   - .build
 
-indentation: 2
+indentation: 4
 
 custom_rules:
   no_objcMembers:
