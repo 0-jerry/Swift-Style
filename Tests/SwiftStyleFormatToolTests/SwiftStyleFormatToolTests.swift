@@ -1,14 +1,14 @@
 // Created by Cal Stephens on 9/25/23.
-// Copyright © 2023 Airbnb Inc. All rights reserved.
+// Copyright © 2023 SwiftStyle Inc. All rights reserved.
 
 import ArgumentParser
 import XCTest
 
-@testable import AirbnbSwiftFormatTool
+@testable import SwiftStyleFormatTool
 
-// MARK: - AirbnbSwiftFormatToolTest
+// MARK: - SwiftStyleFormatToolTest
 
-final class AirbnbSwiftFormatToolTest: XCTestCase {
+final class SwiftStyleFormatToolTest: XCTestCase {
 
     // MARK: Internal
 
@@ -30,7 +30,7 @@ final class AirbnbSwiftFormatToolTest: XCTestCase {
                 swiftLintAutocorrect: {
                     ranSwiftLintAutocorrect = true
                     return EXIT_SUCCESS
-                }
+                },
             )
         )
 
@@ -59,8 +59,8 @@ final class AirbnbSwiftFormatToolTest: XCTestCase {
                 swiftLintAutocorrect: {
                     ranSwiftLintAutocorrect = true
                     return EXIT_SUCCESS
-                }
-            )
+                },
+            ),
         )
 
         XCTAssertNil(error)
@@ -95,7 +95,7 @@ final class AirbnbSwiftFormatToolTest: XCTestCase {
                     // When autocorrecting SwiftLint returns EXIT_SUCCESS
                     // even if there were violations that were fixed
                     return EXIT_SUCCESS
-                }
+                },
             )
         )
 
@@ -135,7 +135,7 @@ final class AirbnbSwiftFormatToolTest: XCTestCase {
                     // In this case, SwiftLint still returns a zero exit code.
                     ranSwiftLintAutocorrect = true
                     return EXIT_SUCCESS
-                }
+                },
             )
         )
 
@@ -167,8 +167,8 @@ final class AirbnbSwiftFormatToolTest: XCTestCase {
                 swiftLintAutocorrect: {
                     ranSwiftLintAutocorrect = true
                     return EXIT_SUCCESS
-                }
-            )
+                },
+            ),
         )
 
         XCTAssertEqual(error as? ExitCode, ExitCode.failure)
@@ -196,8 +196,8 @@ final class AirbnbSwiftFormatToolTest: XCTestCase {
                 swiftLintAutocorrect: {
                     ranSwiftLintAutocorrect = true
                     return EXIT_SUCCESS
-                }
-            )
+                },
+            ),
         )
 
         XCTAssertEqual(error as? ExitCode, ExitCode.failure)
@@ -225,8 +225,8 @@ final class AirbnbSwiftFormatToolTest: XCTestCase {
                 swiftLintAutocorrect: {
                     ranSwiftLintAutocorrect = true
                     return EXIT_SUCCESS
-                }
-            )
+                },
+            ),
         )
 
         XCTAssertEqual(error as? ExitCode, ExitCode.failure)
@@ -250,17 +250,17 @@ final class AirbnbSwiftFormatToolTest: XCTestCase {
 
     // MARK: Private
 
-    /// Runs `AirbnbSwiftFormatTool` with the `Command` calls mocked using the given mocks
+    /// Runs `SwiftStyleFormatTool` with the `Command` calls mocked using the given mocks
     private func runFormatTool(arguments: [String]? = nil, with mocks: MockCommands) -> Error? {
         let existingRunCommandImplementation = Command.runCommand
 
         Command.runCommand = mocks.mockRunCommand(_:)
         defer { Command.runCommand = existingRunCommandImplementation }
 
-        let formatTool = try! AirbnbSwiftFormatTool.parse([
+        let formatTool = try! SwiftStyleFormatTool.parse([
             "Sources",
             "--swift-format-path",
-            "airbnb.swiftformat",
+            "swiftstyle.swiftformat",
             "--swift-lint-path",
             "swiftlint.yml",
         ] + (arguments ?? []))
@@ -277,7 +277,7 @@ final class AirbnbSwiftFormatToolTest: XCTestCase {
 
 // MARK: - MockCommands
 
-/// Mock implementations of the commands ran by `AirbnbSwiftFormatTool`
+/// Mock implementations of the commands ran by `SwiftStyleFormatTool`
 struct MockCommands {
     var swiftFormat: (() -> Int32)?
     var swiftLint: (() -> Int32)?
@@ -285,14 +285,14 @@ struct MockCommands {
 
     func mockRunCommand(_ command: Command) -> Int32 {
         if command.launchPath.lowercased().contains("swiftformat") {
-            return swiftFormat?() ?? EXIT_SUCCESS
+            swiftFormat?() ?? EXIT_SUCCESS
         }
 
         else if command.launchPath.lowercased().contains("swiftlint") {
             if command.arguments.contains("--fix") {
-                return swiftLintAutocorrect?() ?? EXIT_SUCCESS
+                swiftLintAutocorrect?() ?? EXIT_SUCCESS
             } else {
-                return swiftLint?() ?? EXIT_SUCCESS
+                swiftLint?() ?? EXIT_SUCCESS
             }
         }
 

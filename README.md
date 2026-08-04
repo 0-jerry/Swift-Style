@@ -1,6 +1,6 @@
-# Airbnb Swift Style Guide
+# Swift Style Guide
 
-https://swift.airbnb.tech
+https://swift.swiftstyle.tech
 
 ## Goals
 
@@ -21,62 +21,76 @@ Note that brevity is not a primary goal. Code should be made more concise only i
   - If a rule purely affects the syntactical format of the code, it must be autocorrectable.
   - Autocorrect should be non-destructive and should not affect the runtime behavior of code.
   - Linting is best suited for rules that affect the runtime behavior of code or that discourage patterns with no direct replacement.
-  - Best practices without autocorrect or linting are still welcomed as general advice for humans and [AI agents](https://swift.airbnb.tech/skill).
+  - Best practices without autocorrect or linting are still welcomed as general advice for humans and [AI agents](https://swift.swiftstyle.tech/skill).
 - We strive to align with best practices of the broader [Swift community](https://forums.swift.org).
 - This guide is in addition to the official [Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/). These rules should not contradict that document.
 
-## Swift Package Manager command plugin
+## Swift Formatting Scripts (`format.sh` & `lint.sh`)
 
-We offer a Swift Package Manager command plugin that autocorrects or lints your package according to the style guide. To use this command plugin with your package, all you need to do is add this repo as a dependency:
+We provide standalone scripts (`scripts/format.sh` and `scripts/lint.sh`) that format or lint your codebase according to the style guide.
 
-```swift
-dependencies: [
-    .package(url: "https://github.com/airbnb/swift", from: "1.0.0"),
-]
-```
-
-and then run the `format` command plugin in your package directory:
+To format your code, run:
 
 ```shell
-$ swift package format
+$ ./scripts/format.sh
+```
+
+To lint without reformatting (e.g. for CI/CD or Git hooks):
+
+```shell
+$ ./scripts/lint.sh
 ```
 
 <details>
 <summary>Usage guide</summary>
 
 ```shell
-# Prompts for permission to write to the package directory.
-$ swift package format
+# Format all Swift files in the repository:
+$ ./scripts/format.sh
 
-# When using a noninteractive shell, you can use:
-$ swift package --allow-writing-to-package-directory format
+# Lint without reformatting:
+$ ./scripts/lint.sh
 
-# To just lint without reformatting, you can use `--lint`:
-$ swift package format --lint
+# Format specific directories or files:
+$ ./scripts/format.sh Sources/ Tests/
 
-# By default the command plugin runs on the entire package directory.
-# You can exclude directories using `exclude`:
-$ swift package format --exclude Tests
-
-# Alternatively you can explicitly list the set of paths and/or SPM targets:
-$ swift package format --paths Sources Tests Package.swift
-$ swift package format --targets AirbnbSwiftFormatTool
-
-# The plugin infers your package's minimum Swift version from the `swift-tools-version`
-# in your `Package.swift`, but you can provide a custom value with `--swift-version`:
-$ swift package format --swift-version 6.2
+# Via Rakefile:
+$ bundle exec rake format:swift
+$ bundle exec rake lint:swift
 ```
 
-The package plugin returns a non-zero exit code if there is a lint failure that requires attention.
+The script returns a non-zero exit code if there is a lint failure that requires attention.
 
-- In `--lint` mode, any lint failure from any tool will result in a non-zero exit code.
-- In standard autocorrect mode without `--lint`, only failures from SwiftLint lint-only rules will result in a non-zero exit code.
+- In `lint.sh` mode, any lint failure from any tool will result in a non-zero exit code.
+- In standard `format.sh` mode, only failures from SwiftLint lint-only rules will result in a non-zero exit code.
 
 </details>
 
+## Git Pre-Commit Hook
+
+You can install a Git pre-commit hook to automatically format staged Swift files before each `git commit`.
+
+```shell
+$ ./scripts/setup-git-hook.sh
+```
+
+Or via Rakefile:
+
+```shell
+$ rake setup:hooks
+```
+
+Once installed, the hook will:
+1. Detect staged `.swift` files in your commit
+2. Automatically run `scripts/format.sh` on those files
+3. Re-stage any reformatted files so they are included in the commit
+
+> [!NOTE]
+> The hook only runs on staged files, so it won't touch files you haven't added with `git add`.
+
 ## AI Skill
 
-We offer an [AI skill](https://swift.airbnb.tech/skill) that summarizes the non-autocorrected best practices defined in style guide.
+We offer an [AI skill](https://swift.swiftstyle.tech/skill) that summarizes the non-autocorrected best practices defined in style guide.
 
 ## Table of Contents
 
@@ -97,7 +111,7 @@ We offer an [AI skill](https://swift.airbnb.tech/skill) that summarizes the non-
 
 ## Xcode Formatting
 
-_You can enable the following settings in Xcode by running [this script](https://github.com/airbnb/swift/blob/master/resources/xcode_settings.bash), e.g. as part of a "Run Script" build phase._
+_You can enable the following settings in Xcode by running [this script](https://github.com/swiftstyle/swift/blob/master/resources/xcode_settings.bash), e.g. as part of a "Run Script" build phase._
 
 - <a id='column-width'></a>(<a href='#column-width'>link</a>) **Each line should have a maximum column width of 100 characters.**
 
@@ -801,7 +815,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```
 
   #### Why?
-  1. **Consistency**: We should prefer to either _always_ inline the `let` keyword or _never_ inline the `let` keyword. In Airbnb's Swift codebase, we [observed](https://github.com/airbnb/swift/pull/126#discussion_r631979244) that inline `let` is used far more often in practice (especially when destructuring enum cases with a single associated value).
+  1. **Consistency**: We should prefer to either _always_ inline the `let` keyword or _never_ inline the `let` keyword. In SwiftStyle's Swift codebase, we [observed](https://github.com/swiftstyle/swift/pull/126#discussion_r631979244) that inline `let` is used far more often in practice (especially when destructuring enum cases with a single associated value).
 
   2. **Clarity**: Inlining the `let` keyword makes it more clear which identifiers are part of the conditional check and which identifiers are binding new variables, since the `let` keyword is always adjacent to the variable identifier.
 
@@ -4465,7 +4479,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
 
-  //  Copyright © 2018 Airbnb. All rights reserved.
+  //  Copyright © 2018 SwiftStyle. All rights reserved.
   //
   import DLSPrimitives
   import Constellation
@@ -4476,7 +4490,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // RIGHT
 
-  //  Copyright © 2018 Airbnb. All rights reserved.
+  //  Copyright © 2018 SwiftStyle. All rights reserved.
   //
 
   import Constellation
@@ -4490,7 +4504,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
   ```swift
   // WRONG
 
-  //  Copyright © 2018 Airbnb. All rights reserved.
+  //  Copyright © 2018 SwiftStyle. All rights reserved.
   //
 
   import DLSPrimitives
@@ -4501,7 +4515,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
   // RIGHT
 
-  //  Copyright © 2018 Airbnb. All rights reserved.
+  //  Copyright © 2018 SwiftStyle. All rights reserved.
   //
 
   import DLSPrimitives
@@ -5797,7 +5811,7 @@ _You can enable the following settings in Xcode by running [this script](https:/
 
 ## Contributors
 
-- [View Contributors](https://github.com/airbnb/swift/graphs/contributors)
+- [View Contributors](https://github.com/swiftstyle/swift/graphs/contributors)
 
 **[⬆ back to top](#table-of-contents)**
 

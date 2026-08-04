@@ -1,12 +1,12 @@
 import ArgumentParser
 import Foundation
 
-// MARK: - AirbnbSwiftFormatTool
+// MARK: - SwiftStyleFormatTool
 
 /// A command line tool that formats the given directories using SwiftFormat and SwiftLint,
-/// based on the Airbnb Swift Style Guide
+/// based on the Swift Style Guide
 @main
-struct AirbnbSwiftFormatTool: ParsableCommand {
+struct SwiftStyleFormatTool: ParsableCommand {
 
     // MARK: Internal
 
@@ -32,7 +32,7 @@ struct AirbnbSwiftFormatTool: ParsableCommand {
     var log = false
 
     @Option(help: "The absolute path to the SwiftFormat config file")
-    var swiftFormatConfig = Bundle.module.path(forResource: "airbnb", ofType: "swiftformat")!
+    var swiftFormatConfig = Bundle.module.path(forResource: "swiftstyle", ofType: "swiftformat")!
 
     @Option(help: "The absolute path to the SwiftLint config file")
     var swiftLintConfig = Bundle.module.path(forResource: "swiftlint", ofType: "yml")!
@@ -49,15 +49,15 @@ struct AirbnbSwiftFormatTool: ParsableCommand {
 
         // Run SwiftLint in autocorrect mode first, so that if autocorrect fixes all of the SwiftLint violations
         // then the following lint-only invocation will not report any violations.
-        let swiftLintAutocorrectExitCode: Int32?
-        if
-            // When only linting, we shouldn't run SwiftLint with autocorrect enabled
-            !lintOnly
-        {
-            swiftLintAutocorrectExitCode = try swiftLintAutocorrect.run()
-        } else {
-            swiftLintAutocorrectExitCode = nil
-        }
+        let swiftLintAutocorrectExitCode: Int32? =
+            if
+                // When only linting, we shouldn't run SwiftLint with autocorrect enabled
+                !lintOnly
+            {
+                try swiftLintAutocorrect.run()
+            } else {
+                nil
+            }
 
         // We always have to run SwiftLint in lint-only mode at least once,
         // because when in autocorrect mode SwiftLint won't emit any lint warnings.
@@ -81,7 +81,7 @@ struct AirbnbSwiftFormatTool: ParsableCommand {
         }
 
         if
-            let swiftLintAutocorrectExitCode = swiftLintAutocorrectExitCode,
+            let swiftLintAutocorrectExitCode,
             swiftLintAutocorrectExitCode != EXIT_SUCCESS
         {
             throw ExitCode(swiftLintAutocorrectExitCode)
@@ -102,7 +102,7 @@ struct AirbnbSwiftFormatTool: ParsableCommand {
             swiftFormatConfig,
         ]
 
-        if let swiftFormatCachePath = swiftFormatCachePath {
+        if let swiftFormatCachePath {
             arguments += ["--cache", swiftFormatCachePath]
         }
 
@@ -110,14 +110,14 @@ struct AirbnbSwiftFormatTool: ParsableCommand {
             arguments += ["--lint"]
         }
 
-        if let swiftVersion = swiftVersion {
+        if let swiftVersion {
             arguments += ["--swiftversion", swiftVersion]
         }
 
         return Command(
             log: log,
             launchPath: swiftFormatPath,
-            arguments: arguments
+            arguments: arguments,
         )
     }
 
@@ -132,7 +132,7 @@ struct AirbnbSwiftFormatTool: ParsableCommand {
             "--strict",
         ]
 
-        if let swiftLintCachePath = swiftLintCachePath {
+        if let swiftLintCachePath {
             arguments += ["--cache-path", swiftLintCachePath]
         }
 
@@ -143,13 +143,13 @@ struct AirbnbSwiftFormatTool: ParsableCommand {
         return Command(
             log: log,
             launchPath: swiftLintPath,
-            arguments: arguments
+            arguments: arguments,
         )
     }
 
     private func log(_ string: String) {
         // swiftlint:disable:next no_direct_standard_out_logs
-        print("[AirbnbSwiftFormatTool]", string)
+        print("[SwiftStyleFormatTool]", string)
     }
 
 }
